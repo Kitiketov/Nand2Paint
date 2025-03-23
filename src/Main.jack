@@ -1,0 +1,24 @@
+class Main
+{
+    static Cursor cursor;
+
+    function void main()
+   {
+        var int key, tick;
+        let cursor = Cursor.new();
+        
+
+        while (true){
+            if (tick = 20000){
+            let key = Keyboard.keyPressed();
+            if (key = 87) {do cursor.moveDirection(Vector.new(0,-1));}
+            if (key = 65) {do cursor.moveDirection(Vector.new(-1,0));}
+            if (key = 83) {do cursor.moveDirection(Vector.new(0,1));}
+            if (key = 68) {do cursor.moveDirection(Vector.new(1,0));}
+            let tick = 0;
+            }
+            let tick = tick + 1;
+        }
+        return;
+   }
+}

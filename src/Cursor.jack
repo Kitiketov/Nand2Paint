@@ -1,0 +1,35 @@
+class Cursor{
+    field Vector position;
+        field Array underCursor;
+
+
+    constructor Cursor new()
+    {
+        let underCursor = Array.new(4);
+        let position = Vector.new(16, 16);
+        do drawCursor();
+        return this;
+    }
+    method void moveDirection(Vector direction){
+        do cleanCursor();
+        let position = position.add(direction);
+        do drawCursor();
+        return;
+    }
+    method void drawCursor(){
+        do Screen.setColor(true);
+        do Screen.drawPixel(position.getX()+1, position.getY());
+        do Screen.drawPixel(position.getX()-1, position.getY());
+        do Screen.drawPixel(position.getX(), position.getY()+1);
+        do Screen.drawPixel(position.getX(), position.getY()-1);
+        return;
+    }
+    method void cleanCursor(){
+        do Screen.setColor(false);
+        do Screen.drawPixel(position.getX()+1, position.getY());
+        do Screen.drawPixel(position.getX()-1, position.getY());
+        do Screen.drawPixel(position.getX(), position.getY()+1);
+        do Screen.drawPixel(position.getX(), position.getY()-1);
+        return;
+    }
+}

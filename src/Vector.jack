@@ -1,0 +1,24 @@
+class Vector {
+    field int x;
+    field int y;
+
+    constructor Vector new(int xx, int yy) {
+        let x = xx;
+        let y = yy;
+        return this;
+    }
+    method Vector getX(){
+        return x;
+    }
+    method Vector getY(){
+        return y;
+    }
+
+    method Vector add (Vector other){
+        return Vector.new(x + other.getX(), y + other.getY());
+    }
+    method void dispose(){
+        do Memory.deAlloc(this);
+       }
+   {
+}

@@ -1,0 +1,112 @@
+function Cursor.new 0
+push constant 2
+call Memory.alloc 1
+pop pointer 0
+push constant 4
+call Array.new 1
+pop this 1
+push constant 16
+push constant 16
+call Vector.new 2
+pop this 0
+push pointer 0
+call Cursor.drawCursor 1
+pop temp 0
+push pointer 0
+return
+function Cursor.moveDirection 0
+push argument 0
+pop pointer 0
+push pointer 0
+call Cursor.cleanCursor 1
+pop temp 0
+push this 0
+push argument 1
+call Vector.add 2
+pop this 0
+push pointer 0
+call Cursor.drawCursor 1
+pop temp 0
+push constant 0
+return
+function Cursor.drawCursor 0
+push argument 0
+pop pointer 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push this 0
+call Vector.getX 1
+push constant 1
+add
+push this 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+call Vector.getX 1
+push constant 1
+sub
+push this 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+call Vector.getX 1
+push this 0
+call Vector.getY 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+call Vector.getX 1
+push this 0
+call Vector.getY 1
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push constant 0
+return
+function Cursor.cleanCursor 0
+push argument 0
+pop pointer 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push this 0
+call Vector.getX 1
+push constant 1
+add
+push this 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+call Vector.getX 1
+push constant 1
+sub
+push this 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+call Vector.getX 1
+push this 0
+call Vector.getY 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push this 0
+call Vector.getX 1
+push this 0
+call Vector.getY 1
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push constant 0
+return
