@@ -1,21 +1,34 @@
-class DrawUI {   
+class DrawUI {  
+     
 
-    function void PrintPosition (int x, int y) {
+    function void PrintPosition (int x, int y, int size, int instrument, bool color) {
         do Output.moveCursor(22, 0);
         do Output.printString("x: ");
         do Output.printInt(x);
         do Output.printString("y: ");
         do Output.printInt(y);
+        do Output.printString("  ");
+        do Output.printString("size: ");
+        do Output.printInt(size);
+        do Output.printString("  ");
+        do Output.printString("instrument: ");
+        do Output.printInt(instrument);
+        do Output.printString("  ");
+        do Output.printString("color: ");
+        if (color) {
+            do Output.printString("black");
+        }
+        if (color = false) {
+            do Output.printString("white");
+        }
         return;
     }
 
     function void updatePosition (Vector pos) {
         do DrawUI.CleanPrintedPosition();
-        do DrawUI.PrintPosition(pos.getX(), pos.getY());
+        do DrawUI.PrintPosition(pos.getX(), pos.getY(), 1, 1, true);
         return;
-    }
-
-    
+    }    
 
     function void CleanPrintedPosition () {
         var int y;
