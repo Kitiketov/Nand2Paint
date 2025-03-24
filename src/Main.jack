@@ -6,10 +6,11 @@ class Main
    {
         var int key, tick;
         let cursor = Cursor.new();
-        
+        do DrawUI.DrawUI();
+        do DrawUI.PrintPosition(0, 0);        
 
         while (true){
-            if (tick = 20000){
+            if (tick = 2500){
             let key = Keyboard.keyPressed();
             if (key = 87) {do cursor.moveDirection(Vector.new(0,-1));}
             if (key = 65) {do cursor.moveDirection(Vector.new(-1,0));}
