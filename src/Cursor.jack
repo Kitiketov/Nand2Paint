@@ -1,12 +1,16 @@
 class Cursor{
     field Vector position;
         field Array underCursor;
+            field Vector prevPosition;
+                field bool hasPrev;
 
 
     constructor Cursor new()
     {
+        let prevPosition = Vector.new(-1, -1);
         let underCursor = Array.new(4);
         let position = Vector.new(16, 16);
+        let hasPrev = false;
         do drawCursor();
         return this;
     }
@@ -32,5 +36,20 @@ class Cursor{
         do Screen.drawPixel(position.getX(), position.getY()+1);
         do Screen.drawPixel(position.getX(), position.getY()-1);
         return;
+    }
+    method void savePosition(){
+        let prevPosition = position;
+        let hasPrev = true;
+        return;
+    }
+    method Vector prevIsNone(){
+        return hasPrev;
+    }
+    method int getPositionX(){
+        return position.getX();
+    }
+
+        method int getPositionY(){
+        return position.getY();
     }
 }
