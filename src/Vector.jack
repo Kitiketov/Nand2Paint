@@ -19,6 +19,6 @@ class Vector {
     }
     method void dispose(){
         do Memory.deAlloc(this);
-       }
-   {
+        return;
+       }   
 }

@@ -17,6 +17,7 @@ class Cursor{
     method void moveDirection(Vector direction){
         do cleanCursor();
         let position = position.add(direction);
+        do DrawUI.updatePosition(position);
         do drawCursor();
         return;
     }

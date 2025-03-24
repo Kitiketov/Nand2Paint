@@ -24,6 +24,9 @@ push this 0
 push argument 1
 call Vector.add 2
 pop this 0
+push this 0
+call DrawUI.updatePosition 1
+pop temp 0
 push pointer 0
 call Cursor.drawCursor 1
 pop temp 0

@@ -9,9 +9,11 @@ class Main
         var int key, tick;
         let cursor = Cursor.new();
         let paintTools = PaintTools.new();
+        do DrawUI.DrawUI();
+        do DrawUI.PrintPosition(0, 0);        
 
         while (true){
-            if (tick = 20000){
+            if (tick = 2500){
             let key = Keyboard.keyPressed();
             if (startDrawing=true & Cursor.prevIsNone() == true ){
                 do Cursor.savePosition();
