@@ -1,0 +1,19 @@
+class PaintTools{
+    field Pen pen;
+    field int size;
+    field int instrument;
+    field bool color;
+
+    constructor new{}{
+        let pen = Pen.new();
+        let size = 1;
+        let color = true;
+        let instrument = 0;
+
+        return;
+    }
+    method void tryDraw(){
+        if (instrument = 0){do pen.drawPixel(color, cursor.getPositionX(), cursor.getPositionY())}
+        return;
+    }
+}
