@@ -17,10 +17,22 @@ class DrawUI {
         var int y;
         let y = 241;
         while (y < 256) {
-            do Screen.drawLine(1, y, 60, y);
+            do Screen.drawLine(1, y, 200, y);
             let y = y + 1;
         }
         return;
+    }
+
+	    function void loadPixelUnderCursor(Vector position, Array underCursor){
+		do Screen.setColor(underCursor[0]);
+		do Screen.drawPixel(position.getX(), position.getY()-1);
+		do Screen.setColor(underCursor[1]);
+		do Screen.drawPixel(position.getX()+1, position.getY());
+		do Screen.setColor(underCursor[2]);
+		do Screen.drawPixel(position.getX(), position.getY()+1);
+		do Screen.setColor(underCursor[3]);
+		do Screen.drawPixel(position.getX()-1, position.getY());
+		return;
     }
 
 	function void updatePosition (Vector pos) {

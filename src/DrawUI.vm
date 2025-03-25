@@ -26,9 +26,13 @@ push constant 256
 lt
 not
 if-goto WHILE_END0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
 push constant 1
 push local 0
-push constant 60
+push constant 200
 push local 0
 call Screen.drawLine 4
 pop temp 0
@@ -38,6 +42,69 @@ add
 pop local 0
 goto WHILE_EXP0
 label WHILE_END0
+push constant 0
+return
+function DrawUI.loadPixelUnderCursor 0
+push constant 0
+push argument 1
+add
+pop pointer 1
+push that 0
+call Screen.setColor 1
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push constant 1
+push argument 1
+add
+pop pointer 1
+push that 0
+call Screen.setColor 1
+pop temp 0
+push argument 0
+call Vector.getX 1
+push constant 1
+add
+push argument 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push constant 2
+push argument 1
+add
+pop pointer 1
+push that 0
+call Screen.setColor 1
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push constant 3
+push argument 1
+add
+pop pointer 1
+push that 0
+call Screen.setColor 1
+pop temp 0
+push argument 0
+call Vector.getX 1
+push constant 1
+sub
+push argument 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
 push constant 0
 return
 function DrawUI.updatePosition 0

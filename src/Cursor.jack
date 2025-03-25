@@ -14,24 +14,50 @@ class Cursor{
         do DrawUI.drawCursor(position);
         return;
     }
+    function void savePixelUnderCursor(){
+        let underCursor[0] = Cursor.getColor(position.getX(), position.getY()-1);
+        let underCursor[1] = Cursor.getColor(position.getX()+1, position.getY());
+        let underCursor[2] = Cursor.getColor(position.getX(), position.getY()+1);
+        let underCursor[3] = Cursor.getColor(position.getX()-1, position.getY());
+        return;
+    }
+
+
+    function bool getColor(int x, int y){
+        var int address, bitMask, pixelWord, a,b,c;
+        let a = (32 * y);
+        let b = (x / 16);
+        let c = b*16 - x ;
+        let address = 16384 + a + b;
+        let pixelWord = Memory.peek(address);
+        do Output.printInt(pixelWord);
+        do Output.printInt(888);
+        do Output.printInt(Main.binPow(2,c));
+        let bitMask = Main.binPow(2,c); 
+        return ~((pixelWord & bitMask) = 0);
+    }
+
     function void moveDirection(Vector direction){
         var int newX, newY;
         let newX = position.getX() + direction.getX();
         let newY = position.getY() + direction.getY();
         if (Cursor.isValidMoveDirection(newX, newY)){
+
             do DrawUI.cleanCursor(position);
+            do DrawUI.loadPixelUnderCursor(position, underCursor);
             let position = position.add(direction);
             do DrawUI.updatePosition(position);
+            do Cursor.savePixelUnderCursor();
             do DrawUI.drawCursor(position);
         }
         do direction.dispose();
         return;
     }
+
     function bool isValidMoveDirection(int x, int y){
-        return ((x > 0) & (x < 511) & (y > 16) & (y < 238));
+        return ((x > 0) & (x < 511) & (y > 0) & (y < 254));
+        //return ((x > 0) & (x < 511) & (y > 16) & (y < 238));
     }
-
-
 
 
     function  void savePosition(){
@@ -39,9 +65,11 @@ class Cursor{
         let hasPrev = true;
         return;
     }
+
     function bool prevIsNone(){
         return hasPrev;
     }
+
     function int getPositionX(){
         return position.getX();
     }
@@ -49,6 +77,7 @@ class Cursor{
     function int getPositionY(){
         return position.getY();
     }
+
     function int getPosition(){
         return position;
     }

@@ -19,6 +19,111 @@ call DrawUI.drawCursor 1
 pop temp 0
 push constant 0
 return
+function Cursor.savePixelUnderCursor 0
+push constant 0
+push static 1
+add
+push static 0
+call Vector.getX 1
+push static 0
+call Vector.getY 1
+push constant 1
+sub
+call Cursor.getColor 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 1
+push static 1
+add
+push static 0
+call Vector.getX 1
+push constant 1
+add
+push static 0
+call Vector.getY 1
+call Cursor.getColor 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 2
+push static 1
+add
+push static 0
+call Vector.getX 1
+push static 0
+call Vector.getY 1
+push constant 1
+add
+call Cursor.getColor 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 3
+push static 1
+add
+push static 0
+call Vector.getX 1
+push constant 1
+sub
+push static 0
+call Vector.getY 1
+call Cursor.getColor 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 0
+return
+function Cursor.getColor 6
+push constant 32
+push argument 1
+call Math.multiply 2
+pop local 3
+push argument 0
+push constant 16
+call Math.divide 2
+pop local 4
+push local 4
+push constant 16
+call Math.multiply 2
+push argument 0
+sub
+pop local 5
+push constant 16384
+push local 3
+add
+push local 4
+add
+pop local 0
+push local 0
+call Memory.peek 1
+pop local 2
+push local 2
+call Output.printInt 1
+pop temp 0
+push constant 888
+call Output.printInt 1
+pop temp 0
+push constant 2
+push local 5
+call Main.binPow 2
+call Output.printInt 1
+pop temp 0
+push constant 2
+push local 5
+call Main.binPow 2
+pop local 1
+push local 2
+push local 1
+and
+push constant 0
+eq
+not
+return
 function Cursor.moveDirection 2
 push static 0
 call Vector.getX 1
@@ -42,11 +147,17 @@ push static 0
 call DrawUI.cleanCursor 1
 pop temp 0
 push static 0
+push static 1
+call DrawUI.loadPixelUnderCursor 2
+pop temp 0
+push static 0
 push argument 0
 call Vector.add 2
 pop static 0
 push static 0
 call DrawUI.updatePosition 1
+pop temp 0
+call Cursor.savePixelUnderCursor 0
 pop temp 0
 push static 0
 call DrawUI.drawCursor 1
@@ -66,11 +177,11 @@ push constant 511
 lt
 and
 push argument 1
-push constant 16
+push constant 0
 gt
 and
 push argument 1
-push constant 238
+push constant 254
 lt
 and
 return
