@@ -5,10 +5,10 @@ class PaintTools{
     field bool color;
 
     constructor PaintTools new() {
-        // let pen = Pen.new();
-        // let size = 1;
-        // let color = true;
-        // let instrument = 0;
+        let pen = Pen.new();
+        let size = 1;
+        let color = true;
+        let instrument = 0;
 
         return this;
     }
