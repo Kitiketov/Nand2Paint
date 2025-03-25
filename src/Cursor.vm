@@ -86,10 +86,11 @@ push constant 16
 call Math.divide 2
 pop local 4
 push local 4
+neg
 push constant 16
 call Math.multiply 2
 push argument 0
-sub
+add
 pop local 5
 push constant 16384
 push local 3
@@ -100,6 +101,20 @@ pop local 0
 push local 0
 call Memory.peek 1
 pop local 2
+push local 5
+push constant 15
+eq
+push local 2
+and
+push constant 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+return
+label IF_FALSE0
 push constant 2
 push local 5
 call Main.binPow 2
@@ -134,10 +149,16 @@ push static 0
 call DrawUI.cleanCursor 1
 pop temp 0
 push static 0
+push static 1
+call DrawUI.loadPixelUnderCursor 2
+pop temp 0
+push static 0
 push argument 0
 call Vector.add 2
 pop static 0
 call DrawUI.updatePosition 0
+pop temp 0
+call Cursor.savePixelUnderCursor 0
 pop temp 0
 push static 0
 call DrawUI.drawCursor 1

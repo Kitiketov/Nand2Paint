@@ -140,10 +140,77 @@ call DrawUI.PrintPosition 2
 pop temp 0
 push constant 0
 return
-function DrawUI.drawCursor 0
+function DrawUI.drawCursor 2
+push argument 0
+call Vector.getX 1
+pop local 0
+push argument 0
+call Vector.getY 1
+pop local 1
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push local 0
+push constant 1
+add
+push local 1
+call Screen.drawPixel 2
+pop temp 0
+push local 0
+push constant 1
+sub
+push local 1
+call Screen.drawPixel 2
+pop temp 0
+push local 0
+push local 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push local 0
+push local 1
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
 push constant 0
 return
-function DrawUI.cleanCursor 0
+function DrawUI.cleanCursor 2
+push argument 0
+call Vector.getX 1
+pop local 0
+push argument 0
+call Vector.getY 1
+pop local 1
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push local 0
+push constant 1
+add
+push local 1
+call Screen.drawPixel 2
+pop temp 0
+push local 0
+push constant 1
+sub
+push local 1
+call Screen.drawPixel 2
+pop temp 0
+push local 0
+push local 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push local 0
+push local 1
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
 push constant 0
 return
 function DrawUI.DrawUI 1

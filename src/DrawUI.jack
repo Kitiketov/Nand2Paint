@@ -61,19 +61,25 @@ class DrawUI {
 		}
 
 	function void drawCursor(Vector position){
-		// do Screen.setColor(true);
-		// do Screen.drawPixel(position.getX()+1, position.getY());
-		// do Screen.drawPixel(position.getX()-1, position.getY());
-		// do Screen.drawPixel(position.getX(), position.getY()+1);
-		// do Screen.drawPixel(position.getX(), position.getY()-1);
+		var int x,y;
+		let x = position.getX();
+		let y = position.getY();
+		do Screen.setColor(true);
+		do Screen.drawPixel(x+1, y);
+		do Screen.drawPixel(x-1, y);
+		do Screen.drawPixel(x, y+1);
+		do Screen.drawPixel(x, y-1);
 		return;
     }
     function void cleanCursor(Vector position){
-        // do Screen.setColor(false);
-        // do Screen.drawPixel(position.getX()+1, position.getY());
-        // do Screen.drawPixel(position.getX()-1, position.getY());
-        // do Screen.drawPixel(position.getX(), position.getY()+1);
-        // do Screen.drawPixel(position.getX(), position.getY()-1);
+        var int x,y;
+		let x = position.getX();
+		let y = position.getY();
+		do Screen.setColor(false);
+		do Screen.drawPixel(x+1, y);
+		do Screen.drawPixel(x-1, y);
+		do Screen.drawPixel(x, y+1);
+		do Screen.drawPixel(x, y-1);
         return;
     }
 

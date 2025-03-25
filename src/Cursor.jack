@@ -25,9 +25,13 @@ class Cursor{
         var int address, bitMask, pixelWord, a,b,c;
         let a = (32 * y);
         let b = (x / 16);
-        let c = b*16 - x ;
+        let c = -b*16 + x ;
         let address = 16384 + a + b;
         let pixelWord = Memory.peek(address);
+
+        if (c=15 & pixelWord <0){
+            return true;
+        }
         let bitMask = Main.binPow(2,c); 
         return ~((pixelWord & bitMask) = 0);
     }
@@ -39,10 +43,10 @@ class Cursor{
         if (Cursor.isValidMoveDirection(newX, newY)){
 
             do DrawUI.cleanCursor(position);
-            //do DrawUI.loadPixelUnderCursor(position, underCursor);
+            do DrawUI.loadPixelUnderCursor(position, underCursor);
             let position = position.add(direction);
             do DrawUI.updatePosition();
-            //do Cursor.savePixelUnderCursor();
+            do Cursor.savePixelUnderCursor();
             do DrawUI.drawCursor(position);
         }
         do direction.dispose();

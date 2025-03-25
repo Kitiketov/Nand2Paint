@@ -28,18 +28,23 @@ class PaintTools{
 
     function void tryDraw(){
         var Vector pos;
+        let pos = Cursor.getPosition();
         if (instrument = 2){
-            do Pen.draw(Cursor.getPosition(), color, size);
-            //do DrawUI.drawCursor(pos);
+            do Pen.draw(pos, color, size);
+            do DrawUI.drawCursor(pos);
         }
         return;
     }
     function void tryRelize(){
+        var Vector pos;
+        let pos = Cursor.getPosition();
         if (instrument = 3){
-            do Square.draw(Cursor.getPrevPosition(),Cursor.getPosition(),color,false);
+            do Square.draw(Cursor.getPrevPosition(),pos,color,false);
+            do DrawUI.drawCursor(pos);
         }
         if (instrument = 4){
-            do Square.draw(Cursor.getPrevPosition(),Cursor.getPosition(),color,true);
+            do Square.draw(Cursor.getPrevPosition(),pos,color,true);
+            do DrawUI.drawCursor(pos);
         }
         return;
     }
