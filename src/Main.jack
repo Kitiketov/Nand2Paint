@@ -15,17 +15,17 @@ class Main
         while (true){
             if (tick = 2500){
             let key = Keyboard.keyPressed();
-            // if (startDrawing){
-            //     if (Cursor.prevIsNone()){
-            //         do Cursor.savePosition();
-            //     }
-            // }
+            if (startDrawing){
+                if (Cursor.prevIsNone()){
+                    do Cursor.savePosition();
+                }
+            }
             if (key = 32) {let startDrawing = ~startDrawing;}
             if (key = 87) {do Cursor.moveDirection(Vector.new(0,-1));}
             if (key = 65) {do Cursor.moveDirection(Vector.new(-1,0));}
             if (key = 83) {do Cursor.moveDirection(Vector.new(0,1));}
             if (key = 68) {do Cursor.moveDirection(Vector.new(1,0));}
-            //if (startDrawing = true) {do paintTools.tryDraw();}
+            if (startDrawing = true) {do paintTools.tryDraw();}
             let tick = 0;
             }
             let tick = tick + 1;

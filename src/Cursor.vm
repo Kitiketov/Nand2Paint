@@ -4,19 +4,40 @@ neg
 push constant 1
 neg
 call Vector.new 2
+pop static 2
+push constant 4
+call Array.new 1
 pop static 1
 push constant 16
 push constant 16
 call Vector.new 2
 pop static 0
 push constant 0
-pop static 2
+pop static 3
 push static 0
 call DrawUI.drawCursor 1
 pop temp 0
 push constant 0
 return
-function Cursor.moveDirection 0
+function Cursor.moveDirection 2
+push static 0
+call Vector.getX 1
+push argument 0
+call Vector.getX 1
+add
+pop local 0
+push static 0
+call Vector.getY 1
+push argument 0
+call Vector.getY 1
+add
+pop local 1
+push local 0
+push local 1
+call Cursor.isValidMoveDirection 2
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
 push static 0
 call DrawUI.cleanCursor 1
 pop temp 0
@@ -30,21 +51,39 @@ pop temp 0
 push static 0
 call DrawUI.drawCursor 1
 pop temp 0
+label IF_FALSE0
 push argument 0
 call Vector.dispose 1
 pop temp 0
 push constant 0
 return
+function Cursor.isValidMoveDirection 0
+push argument 0
+push constant 0
+gt
+push argument 0
+push constant 511
+lt
+and
+push argument 1
+push constant 16
+gt
+and
+push argument 1
+push constant 238
+lt
+and
+return
 function Cursor.savePosition 0
 push static 0
-pop static 1
+pop static 2
 push constant 0
 not
-pop static 2
+pop static 3
 push constant 0
 return
 function Cursor.prevIsNone 0
-push static 2
+push static 3
 return
 function Cursor.getPositionX 0
 push static 0
