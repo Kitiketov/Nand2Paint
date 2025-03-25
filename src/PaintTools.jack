@@ -3,21 +3,21 @@ class PaintTools{
     static int instrument;
     static bool color;
 
-    function void IncSize () {
-        if (size = 30){
+    function void editSize (int delta) {
+        var Vector pos;
+        let pos = Cursor.getPosition();
+        if (size = 30 ){
             return;
         }
-        let size = size + 1;
+        do DrawUI.cleanCursor(pos);
+        do DrawUI.loadPixelUnderCursor(pos);
+        let size = size + delta;
+        do Cursor.savePixelUnderCursor();
+        do DrawUI.drawCursor(pos);
         return;
     }
 
-    function void DecSize () {
-        if (size = 1){
-            return;
-        }
-        let size = size - 1;
-        return;
-    }
+
 
     function void init () {
         let size = 1;

@@ -34,10 +34,11 @@ class Main
         // do Screen.drawPixel(16,16);
         // return;
 
+        do paintTools.init();
         do DrawUI.DrawUI();
         do Cursor.init();
         do DrawUI.updatePosition();        
-        do paintTools.init();
+
         let keyFlag = true;
 
         while (true){
@@ -56,8 +57,8 @@ class Main
             if (key = 53) {do PaintTools.setInstrument(5); do DrawUI.updatePosition();}
             if (key = 54) {do PaintTools.setInstrument(6); do DrawUI.updatePosition();}
             if (key = 55) {do PaintTools.setInstrument(7); do DrawUI.updatePosition();}
-            if (key = 90 & keyFlag) {do PaintTools.IncSize(); let keyFlag = false; do DrawUI.updatePosition();}
-            if (key = 88 & keyFlag) {do PaintTools.DecSize(); let keyFlag = false; do DrawUI.updatePosition();}
+            if (key = 90 & keyFlag) {do PaintTools.editSize(1); let keyFlag = false; do DrawUI.updatePosition();}
+            if (key = 88 & keyFlag) {do PaintTools.editSize(-1); let keyFlag = false; do DrawUI.updatePosition();}
             if (key = 69 & keyFlag) {do PaintTools.tryRelize(); let keyFlag = false; let startDrawing = false; do DrawUI.updatePosition();}
             if (startDrawing = true & isMoving) {do PaintTools.tryDraw(); let isMoving = false;}
             let tick = 0;
