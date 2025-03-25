@@ -1,10 +1,13 @@
 class DrawUI {   
 
+	static String xxx;
+		static String yyy;
+
     function void PrintPosition (int x, int y) {
         do Output.moveCursor(22, 0);
-        do Output.printString("x: ");
+        do Output.printString(xxx);
         do Output.printInt(x);
-        do Output.printString("y: ");
+        do Output.printString(yyy);
         do Output.printInt(y);
         return;
     }
@@ -21,7 +24,7 @@ class DrawUI {
         var int y;
         let y = 241;
         while (y < 256) {
-            do Screen.drawLine(1, y, 511, y);
+            do Screen.drawLine(1, y, 60, y);
             let y = y + 1;
         }
         return;
@@ -29,6 +32,8 @@ class DrawUI {
 
     function void DrawUI () {
     var int memAddress; 
+	let xxx = "x: ";
+	let yyy = "y: ";
 	let memAddress = 16384;
 	// column 0
 	do Memory.poke(memAddress, -1);

@@ -1,7 +1,13 @@
 function Cursor.new 0
-push constant 2
+push constant 4
 call Memory.alloc 1
 pop pointer 0
+push constant 1
+neg
+push constant 1
+neg
+call Vector.new 2
+pop this 2
 push constant 4
 call Array.new 1
 pop this 1
@@ -9,6 +15,8 @@ push constant 16
 push constant 16
 call Vector.new 2
 pop this 0
+push constant 0
+pop this 3
 push pointer 0
 call Cursor.drawCursor 1
 pop temp 0
@@ -112,4 +120,31 @@ sub
 call Screen.drawPixel 2
 pop temp 0
 push constant 0
+return
+function Cursor.savePosition 0
+push argument 0
+pop pointer 0
+push this 0
+pop this 2
+push constant 0
+not
+pop this 3
+push constant 0
+return
+function Cursor.prevIsNone 0
+push argument 0
+pop pointer 0
+push this 3
+return
+function Cursor.getPositionX 0
+push argument 0
+pop pointer 0
+push this 0
+call Vector.getX 1
+return
+function Cursor.getPositionY 0
+push argument 0
+pop pointer 0
+push this 0
+call Vector.getY 1
 return

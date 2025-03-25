@@ -15,7 +15,9 @@ class Vector {
     }
 
     method Vector add (Vector other){
-        return Vector.new(x + other.getX(), y + other.getY());
+        let x = x + other.getX();
+        let y = y + other.getY();
+        return this;
     }
     method void dispose(){
         do Memory.deAlloc(this);
