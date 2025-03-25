@@ -38,6 +38,9 @@ class PaintTools{
         if (instrument = 3){
             do Square.draw(Cursor.getPrevPosition(),Cursor.getPosition(),color,false);
         }
+        if (instrument = 4){
+            do Square.draw(Cursor.getPrevPosition(),Cursor.getPosition(),color,true);
+        }
         return;
     }
 
