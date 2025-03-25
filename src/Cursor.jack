@@ -2,7 +2,6 @@ class Cursor{
     static Vector position;
         static Array underCursor;
             static Vector prevPosition;
-                static bool hasPrev;
 
 
     function void init()
@@ -10,7 +9,6 @@ class Cursor{
         let prevPosition = Vector.new(-1, -1);
         let underCursor = Array.new(4);
         let position = Vector.new(16, 16);
-        let hasPrev = false;
         do DrawUI.drawCursor(position);
         return;
     }
@@ -52,19 +50,15 @@ class Cursor{
     }
 
     function bool isValidMoveDirection(int x, int y){
-        return ((x > 0) & (x < 511) & (y > 0) & (y < 254));
-        //return ((x > 0) & (x < 511) & (y > 16) & (y < 238));
+        //return ((x > 0) & (x < 511) & (y > 0) & (y < 254));
+        return ((x > 0) & (x < 511) & (y > 16) & (y < 238));
     }
 
 
     function  void savePosition(){
-        let prevPosition = position;
-        let hasPrev = true;
+        do prevPosition.dispose();
+        let prevPosition = Vector.new(position.getX(),position.getY());
         return;
-    }
-
-    function bool prevIsNone(){
-        return hasPrev;
     }
 
     function int getPositionX(){
@@ -75,7 +69,11 @@ class Cursor{
         return position.getY();
     }
 
-    function int getPosition(){
+    function Vector getPosition(){
         return position;
+    }
+
+    function Vector getPrevPosition(){
+        return prevPosition;
     }
 }

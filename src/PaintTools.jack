@@ -4,7 +4,7 @@ class PaintTools{
     static bool color;
 
     function void IncSize () {
-        if (size = 5){
+        if (size = 30){
             return;
         }
         let size = size + 1;
@@ -28,14 +28,16 @@ class PaintTools{
 
     function void tryDraw(){
         var Vector pos;
-        let pos = Cursor.getPosition();
         if (instrument = 2){
-            do Pen.drawPixel(color, pos.getX(),pos.getY());
+            do Pen.draw(Cursor.getPosition(), color, size);
             //do DrawUI.drawCursor(pos);
         }
         return;
     }
     function void tryRelize(){
+        if (instrument = 3){
+            do Square.draw(Cursor.getPrevPosition(),Cursor.getPosition(),color,false);
+        }
         return;
     }
 

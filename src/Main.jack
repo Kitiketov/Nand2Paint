@@ -47,13 +47,8 @@ class Main
         while (true){
             if (tick = 2000){
             let key = Keyboard.keyPressed();
-            if (startDrawing ){
-                if (Cursor.prevIsNone()){
-                    do Cursor.savePosition();
-                }
-            }
             if (key = 0 ) {let keyFlag = true;}
-            if (key = 32 & keyFlag) {let startDrawing = ~startDrawing; let keyFlag = false;}
+            if (key = 32 & keyFlag) {let startDrawing = ~startDrawing; let keyFlag = false; do Cursor.savePosition();}
             if (key = 87) {do Cursor.moveDirection(Vector.new(0,-1));}
             if (key = 65) {do Cursor.moveDirection(Vector.new(-1,0));}
             if (key = 83) {do Cursor.moveDirection(Vector.new(0,1));}

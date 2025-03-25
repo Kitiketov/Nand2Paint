@@ -12,8 +12,6 @@ push constant 16
 push constant 16
 call Vector.new 2
 pop static 0
-push constant 0
-pop static 3
 push static 0
 call DrawUI.drawCursor 1
 pop temp 0
@@ -159,24 +157,25 @@ push constant 511
 lt
 and
 push argument 1
-push constant 0
+push constant 16
 gt
 and
 push argument 1
-push constant 254
+push constant 238
 lt
 and
 return
 function Cursor.savePosition 0
+push static 2
+call Vector.dispose 1
+pop temp 0
 push static 0
+call Vector.getX 1
+push static 0
+call Vector.getY 1
+call Vector.new 2
 pop static 2
 push constant 0
-not
-pop static 3
-push constant 0
-return
-function Cursor.prevIsNone 0
-push static 3
 return
 function Cursor.getPositionX 0
 push static 0
@@ -188,4 +187,7 @@ call Vector.getY 1
 return
 function Cursor.getPosition 0
 push static 0
+return
+function Cursor.getPrevPosition 0
+push static 2
 return

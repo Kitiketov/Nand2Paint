@@ -1,3 +1,7 @@
 class Square{
-    
+    function void draw(Vector start, Vector end,bool color,bool isFill){
+        do Screen.setColor(color);
+        do Screen.drawRectangle(start.getX(),start.getY(),end.getX(),end.getY());
+        return;
+    }
 }
