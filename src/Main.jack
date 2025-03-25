@@ -1,30 +1,30 @@
 class Main
 {
     static Cursor cursor;
-    //static PaintTools paintTools;
+    static PaintTools paintTools;
     static bool startDrawing;
 
     function void main()
    {
         var int key, tick;
-        let cursor = Cursor.new();
-        //let paintTools = PaintTools.new();
+        do Cursor.init();
+        let paintTools = PaintTools.new();
         do DrawUI.DrawUI();
-        do DrawUI.PrintPosition(0, 0);        
+        do DrawUI.updatePosition(Cursor.getPosition());        
 
         while (true){
             if (tick = 2500){
             let key = Keyboard.keyPressed();
-            if (startDrawing){
-                if (Cursor.prevIsNone()){
-                    do Cursor.savePosition();
-                }
-            }
+            // if (startDrawing){
+            //     if (Cursor.prevIsNone()){
+            //         do Cursor.savePosition();
+            //     }
+            // }
             if (key = 32) {let startDrawing = ~startDrawing;}
-            if (key = 87) {do cursor.moveDirection(Vector.new(0,-1));}
-            if (key = 65) {do cursor.moveDirection(Vector.new(-1,0));}
-            if (key = 83) {do cursor.moveDirection(Vector.new(0,1));}
-            if (key = 68) {do cursor.moveDirection(Vector.new(1,0));}
+            if (key = 87) {do Cursor.moveDirection(Vector.new(0,-1));}
+            if (key = 65) {do Cursor.moveDirection(Vector.new(-1,0));}
+            if (key = 83) {do Cursor.moveDirection(Vector.new(0,1));}
+            if (key = 68) {do Cursor.moveDirection(Vector.new(1,0));}
             //if (startDrawing = true) {do paintTools.tryDraw();}
             let tick = 0;
             }

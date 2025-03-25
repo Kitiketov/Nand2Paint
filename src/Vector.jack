@@ -7,10 +7,10 @@ class Vector {
         let y = yy;
         return this;
     }
-    method Vector getX(){
+    method int getX(){
         return x;
     }
-    method Vector getY(){
+    method int getY(){
         return y;
     }
 

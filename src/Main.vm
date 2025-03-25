@@ -1,11 +1,12 @@
 function Main.main 2
-call Cursor.new 0
-pop static 0
+call Cursor.init 0
+pop temp 0
+call PaintTools.new 0
+pop static 1
 call DrawUI.DrawUI 0
 pop temp 0
-push constant 0
-push constant 0
-call DrawUI.PrintPosition 2
+call Cursor.getPosition 0
+call DrawUI.updatePosition 1
 pop temp 0
 label WHILE_EXP0
 push constant 0
@@ -20,82 +21,66 @@ goto IF_FALSE0
 label IF_TRUE0
 call Keyboard.keyPressed 0
 pop local 0
-push static 1
+push local 0
+push constant 32
+eq
 if-goto IF_TRUE1
 goto IF_FALSE1
 label IF_TRUE1
-call Cursor.prevIsNone 0
+push static 2
+not
+pop static 2
+label IF_FALSE1
+push local 0
+push constant 87
+eq
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
-call Cursor.savePosition 0
+push constant 0
+push constant 1
+neg
+call Vector.new 2
+call Cursor.moveDirection 1
 pop temp 0
 label IF_FALSE2
-label IF_FALSE1
 push local 0
-push constant 32
+push constant 65
 eq
 if-goto IF_TRUE3
 goto IF_FALSE3
 label IF_TRUE3
-push static 1
-not
-pop static 1
+push constant 1
+neg
+push constant 0
+call Vector.new 2
+call Cursor.moveDirection 1
+pop temp 0
 label IF_FALSE3
 push local 0
-push constant 87
+push constant 83
 eq
 if-goto IF_TRUE4
 goto IF_FALSE4
 label IF_TRUE4
-push static 0
 push constant 0
 push constant 1
-neg
 call Vector.new 2
-call Cursor.moveDirection 2
+call Cursor.moveDirection 1
 pop temp 0
 label IF_FALSE4
 push local 0
-push constant 65
+push constant 68
 eq
 if-goto IF_TRUE5
 goto IF_FALSE5
 label IF_TRUE5
-push static 0
 push constant 1
-neg
 push constant 0
 call Vector.new 2
-call Cursor.moveDirection 2
+call Cursor.moveDirection 1
 pop temp 0
 label IF_FALSE5
-push local 0
-push constant 83
-eq
-if-goto IF_TRUE6
-goto IF_FALSE6
-label IF_TRUE6
-push static 0
-push constant 0
-push constant 1
-call Vector.new 2
-call Cursor.moveDirection 2
-pop temp 0
-label IF_FALSE6
-push local 0
-push constant 68
-eq
-if-goto IF_TRUE7
-goto IF_FALSE7
-label IF_TRUE7
-push static 0
-push constant 1
-push constant 0
-call Vector.new 2
-call Cursor.moveDirection 2
-pop temp 0
-label IF_FALSE7
 push constant 0
 pop local 1
 label IF_FALSE0

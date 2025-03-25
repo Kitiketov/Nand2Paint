@@ -17,18 +17,7 @@ call Output.printInt 1
 pop temp 0
 push constant 0
 return
-function DrawUI.updatePosition 0
-call DrawUI.CleanPrintedPosition 0
-pop temp 0
-push argument 0
-call Vector.getX 1
-push argument 0
-call Vector.getY 1
-call DrawUI.PrintPosition 2
-pop temp 0
-push constant 0
-return
-function DrawUI.CleanPrintedPosition 1
+function DrawUI.cleanPrintedPosition 1
 push constant 241
 pop local 0
 label WHILE_EXP0
@@ -49,6 +38,94 @@ add
 pop local 0
 goto WHILE_EXP0
 label WHILE_END0
+push constant 0
+return
+function DrawUI.updatePosition 0
+call DrawUI.cleanPrintedPosition 0
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+call DrawUI.PrintPosition 2
+pop temp 0
+push constant 0
+return
+function DrawUI.drawCursor 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 0
+call Vector.getX 1
+push constant 1
+add
+push argument 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push argument 0
+call Vector.getX 1
+push constant 1
+sub
+push argument 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push constant 0
+return
+function DrawUI.cleanCursor 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 0
+call Vector.getX 1
+push constant 1
+add
+push argument 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push argument 0
+call Vector.getX 1
+push constant 1
+sub
+push argument 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
 push constant 0
 return
 function DrawUI.DrawUI 1

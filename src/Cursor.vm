@@ -1,150 +1,59 @@
-function Cursor.new 0
-push constant 4
-call Memory.alloc 1
-pop pointer 0
+function Cursor.init 0
 push constant 1
 neg
 push constant 1
 neg
 call Vector.new 2
-pop this 2
-push constant 4
-call Array.new 1
-pop this 1
+pop static 1
 push constant 16
 push constant 16
 call Vector.new 2
-pop this 0
+pop static 0
 push constant 0
-pop this 3
-push pointer 0
-call Cursor.drawCursor 1
+pop static 2
+push static 0
+call DrawUI.drawCursor 1
 pop temp 0
-push pointer 0
+push constant 0
 return
 function Cursor.moveDirection 0
-push argument 0
-pop pointer 0
-push pointer 0
-call Cursor.cleanCursor 1
+push static 0
+call DrawUI.cleanCursor 1
 pop temp 0
-push this 0
-push argument 1
+push static 0
+push argument 0
 call Vector.add 2
-pop this 0
-push this 0
+pop static 0
+push static 0
 call DrawUI.updatePosition 1
 pop temp 0
-push pointer 0
-call Cursor.drawCursor 1
+push static 0
+call DrawUI.drawCursor 1
 pop temp 0
-push constant 0
-return
-function Cursor.drawCursor 0
 push argument 0
-pop pointer 0
-push constant 0
-not
-call Screen.setColor 1
-pop temp 0
-push this 0
-call Vector.getX 1
-push constant 1
-add
-push this 0
-call Vector.getY 1
-call Screen.drawPixel 2
-pop temp 0
-push this 0
-call Vector.getX 1
-push constant 1
-sub
-push this 0
-call Vector.getY 1
-call Screen.drawPixel 2
-pop temp 0
-push this 0
-call Vector.getX 1
-push this 0
-call Vector.getY 1
-push constant 1
-add
-call Screen.drawPixel 2
-pop temp 0
-push this 0
-call Vector.getX 1
-push this 0
-call Vector.getY 1
-push constant 1
-sub
-call Screen.drawPixel 2
-pop temp 0
-push constant 0
-return
-function Cursor.cleanCursor 0
-push argument 0
-pop pointer 0
-push constant 0
-call Screen.setColor 1
-pop temp 0
-push this 0
-call Vector.getX 1
-push constant 1
-add
-push this 0
-call Vector.getY 1
-call Screen.drawPixel 2
-pop temp 0
-push this 0
-call Vector.getX 1
-push constant 1
-sub
-push this 0
-call Vector.getY 1
-call Screen.drawPixel 2
-pop temp 0
-push this 0
-call Vector.getX 1
-push this 0
-call Vector.getY 1
-push constant 1
-add
-call Screen.drawPixel 2
-pop temp 0
-push this 0
-call Vector.getX 1
-push this 0
-call Vector.getY 1
-push constant 1
-sub
-call Screen.drawPixel 2
+call Vector.dispose 1
 pop temp 0
 push constant 0
 return
 function Cursor.savePosition 0
-push argument 0
-pop pointer 0
-push this 0
-pop this 2
+push static 0
+pop static 1
 push constant 0
 not
-pop this 3
+pop static 2
 push constant 0
 return
 function Cursor.prevIsNone 0
-push argument 0
-pop pointer 0
-push this 3
+push static 2
 return
 function Cursor.getPositionX 0
-push argument 0
-pop pointer 0
-push this 0
+push static 0
 call Vector.getX 1
 return
 function Cursor.getPositionY 0
-push argument 0
-pop pointer 0
-push this 0
+push static 0
 call Vector.getY 1
+return
+function Cursor.getPosition 0
+push static 0
 return

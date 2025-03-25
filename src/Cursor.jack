@@ -1,19 +1,20 @@
 class Cursor{
-    field Vector position;
-        field Array underCursor;
-            field Vector prevPosition;
-                field bool hasPrev;
+    static Vector position;
+        //static Array underCursor;
+            static Vector prevPosition;
+                static bool hasPrev;
 
 
-    constructor Cursor new()
+    function void init()
     {
         let prevPosition = Vector.new(-1, -1);
-        let underCursor = Array.new(4);
+        //let underCursor = Array.new(4);
         let position = Vector.new(16, 16);
         let hasPrev = false;
-        do drawCursor();
-        return this;
+        do DrawUI.drawCursor(position);
+        return;
     }
+<<<<<<< HEAD
     method void moveDirection(Vector direction){
         var int newX, newY;
         let newX = position.getX() + direction.getX();
@@ -47,18 +48,33 @@ class Cursor{
         return;
     }
     method void savePosition(){
+=======
+    function void moveDirection(Vector direction){
+        do DrawUI.cleanCursor(position);
+        let position = position.add(direction);
+        do DrawUI.updatePosition(position);
+        do DrawUI.drawCursor(position);
+        do direction.dispose();
+        return;
+    }
+
+    function  void savePosition(){
+>>>>>>> 8f9ea41 (fix cursor make static)
         let prevPosition = position;
         let hasPrev = true;
         return;
     }
-    method Vector prevIsNone(){
+    function bool prevIsNone(){
         return hasPrev;
     }
-    method int getPositionX(){
+    function int getPositionX(){
         return position.getX();
     }
 
-        method int getPositionY(){
+    function int getPositionY(){
         return position.getY();
+    }
+    function int getPosition(){
+        return position;
     }
 }
