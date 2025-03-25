@@ -1,17 +1,26 @@
 class PaintTools{
-    field Pen pen;
-    field int size;
-    field int instrument;
-    field bool color;
+    static Pen pen;
+    static int size;
+    static int instrument;
+    static bool color;
 
-    constructor PaintTools new() {
+    // constructor PaintTools new() {
+    //     // let pen = Pen.new();
+    //     // let size = 1;
+    //     // let color = true;
+    //     // let instrument = 0;
+
+    //     return this;
+    // }
+
+    function void init () {
         // let pen = Pen.new();
-        // let size = 1;
-        // let color = true;
-        // let instrument = 0;
-
-        return this;
+        let size = 1;
+        let color = true;
+        let instrument = 1;
+        return;
     }
+
     method void tryDraw(){
         var Vector pos;
         let pos = Cursor.getPosition();
@@ -20,5 +29,17 @@ class PaintTools{
             do DrawUI.drawCursor(pos);
         }
         return;
+    }
+
+    function int getSize () {
+        return size;
+    }
+
+    function int getInstrument () {
+        return instrument;
+    }
+
+    function bool getColor () {
+        return color;
     }
 }
