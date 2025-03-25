@@ -10,7 +10,7 @@ class Main
         let cursor = Cursor.new();
         let paintTools = PaintTools.new();
         do DrawUI.DrawUI();
-        do DrawUI.PrintPosition(0, 0);        
+        do DrawUI.PrintPosition(0, 0, 1, 1, true);        
 
         while (true){
             if (tick = 2500){
