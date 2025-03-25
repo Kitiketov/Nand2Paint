@@ -1,64 +1,84 @@
 class Cursor{
-    field Vector position;
-        field Array underCursor;
-            field Vector prevPosition;
-                field bool hasPrev;
+    static Vector position;
+        static Array underCursor;
+            static Vector prevPosition;
+                static bool hasPrev;
 
 
-    constructor Cursor new()
+    function void init()
     {
         let prevPosition = Vector.new(-1, -1);
         let underCursor = Array.new(4);
         let position = Vector.new(16, 16);
         let hasPrev = false;
-        do drawCursor();
-        return this;
+        do DrawUI.drawCursor(position);
+        return;
     }
-    method void moveDirection(Vector direction){
+    function void savePixelUnderCursor(){
+        let underCursor[0] = Cursor.getColor(position.getX(), position.getY()-1);
+        let underCursor[1] = Cursor.getColor(position.getX()+1, position.getY());
+        let underCursor[2] = Cursor.getColor(position.getX(), position.getY()+1);
+        let underCursor[3] = Cursor.getColor(position.getX()-1, position.getY());
+        return;
+    }
+
+
+    function bool getColor(int x, int y){
+        var int address, bitMask, pixelWord, a,b,c;
+        let a = (32 * y);
+        let b = (x / 16);
+        let c = b*16 - x ;
+        let address = 16384 + a + b;
+        let pixelWord = Memory.peek(address);
+        do Output.printInt(pixelWord);
+        do Output.printInt(888);
+        do Output.printInt(Main.binPow(2,c));
+        let bitMask = Main.binPow(2,c); 
+        return ~((pixelWord & bitMask) = 0);
+    }
+
+    function void moveDirection(Vector direction){
         var int newX, newY;
         let newX = position.getX() + direction.getX();
         let newY = position.getY() + direction.getY();
-        if (isValidMoveDirection(newX, newY)){
-            do cleanCursor();
+        if (Cursor.isValidMoveDirection(newX, newY)){
+
+            do DrawUI.cleanCursor(position);
+            do DrawUI.loadPixelUnderCursor(position, underCursor);
             let position = position.add(direction);
             do DrawUI.updatePosition(position);
-            do drawCursor();
+            do Cursor.savePixelUnderCursor();
+            do DrawUI.drawCursor(position);
         }
+        do direction.dispose();
         return;
-    }
-    method bool isValidMoveDirection(int x, int y){
-        return ((x > -1) & (x < 513) & (y > -1) & (y < 225));
     }
 
-    method void drawCursor(){
-        do Screen.setColor(true);
-        do Screen.drawPixel(position.getX()+1, position.getY());
-        do Screen.drawPixel(position.getX()-1, position.getY());
-        do Screen.drawPixel(position.getX(), position.getY()+1);
-        do Screen.drawPixel(position.getX(), position.getY()-1);
-        return;
+    function bool isValidMoveDirection(int x, int y){
+        return ((x > 0) & (x < 511) & (y > 0) & (y < 254));
+        //return ((x > 0) & (x < 511) & (y > 16) & (y < 238));
     }
-    method void cleanCursor(){
-        do Screen.setColor(false);
-        do Screen.drawPixel(position.getX()+1, position.getY());
-        do Screen.drawPixel(position.getX()-1, position.getY());
-        do Screen.drawPixel(position.getX(), position.getY()+1);
-        do Screen.drawPixel(position.getX(), position.getY()-1);
-        return;
-    }
-    method void savePosition(){
+
+
+    function  void savePosition(){
         let prevPosition = position;
         let hasPrev = true;
         return;
     }
-    method Vector prevIsNone(){
+
+    function bool prevIsNone(){
         return hasPrev;
     }
-    method int getPositionX(){
+
+    function int getPositionX(){
         return position.getX();
     }
 
-        method int getPositionY(){
+    function int getPositionY(){
         return position.getY();
+    }
+
+    function int getPosition(){
+        return position;
     }
 }
