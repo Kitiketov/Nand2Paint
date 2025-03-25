@@ -1,14 +1,33 @@
-class DrawUI {   
+class DrawUI {  
+	static String NameOfX;
+	static String NameOfY;	
+    static String NameOfSpace;
+	static String NameOfSize;
+	static String NameOfInstrument;
+	static String NameOfColor;
+	static String NameOfBlack;
+	static String NameOfWhite;
 
-	static String xxx;
-		static String yyy;
-
-    function void PrintPosition(int x, int y) {
+    function void PrintPosition (int x, int y) {
         do Output.moveCursor(22, 0);
-        do Output.printString(xxx);
+        do Output.printString(NameOfX);
         do Output.printInt(x);
-        do Output.printString(yyy);
+        do Output.printString(NameOfY);
         do Output.printInt(y);
+        do Output.printString(NameOfSpace);
+        do Output.printString(NameOfSize);
+        do Output.printInt(size);
+        do Output.printString(NameOfSpace);
+        do Output.printString(NameOfInstrument);
+        do Output.printInt(instrument);
+        do Output.printString(NameOfSpace);
+        do Output.printString(NameOfColor);
+        if (color) {
+            do Output.printString(NameOfBlack);
+        }
+        if (color = false) {
+            do Output.printString(NameOfWhite);
+        }
         return;
     }
 
@@ -60,8 +79,15 @@ class DrawUI {
 
     function void DrawUI () {
     var int memAddress; 
-	let xxx = "x: ";
-	let yyy = "y: ";
+	let NameOfX = "x: ";
+	let NameOfY = "y: ";
+	let NameOfSpace = "  "
+	let NameOfSize = "size: ";
+	let NameOfInstrument = "instrument: ";
+	let NameOfColor = "color: ";
+	let NameOfBlack = "black";
+	let NameOfWhite = "white";
+
 	let memAddress = 16384;
 	// column 0
 	do Memory.poke(memAddress, -1);
