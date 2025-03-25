@@ -4,16 +4,21 @@ class PaintTools{
     field int instrument;
     field bool color;
 
-    constructor new{}{
-        let pen = Pen.new();
-        let size = 1;
-        let color = true;
-        let instrument = 0;
+    constructor PaintTools new() {
+        // let pen = Pen.new();
+        // let size = 1;
+        // let color = true;
+        // let instrument = 0;
 
-        return;
+        return this;
     }
     method void tryDraw(){
-        if (instrument = 0){do pen.drawPixel(color, cursor.getPositionX(), cursor.getPositionY())}
+        var Vector pos;
+        let pos = Cursor.getPosition();
+        if (instrument = 0){
+            do pen.drawPixel(color, pos.getX(),pos.getY());
+            do DrawUI.drawCursor(pos);
+        }
         return;
     }
 }
