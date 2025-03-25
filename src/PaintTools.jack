@@ -17,7 +17,7 @@ class PaintTools{
         // let pen = Pen.new();
         let size = 1;
         let color = true;
-        let instrument = 1;
+        let instrument = 2;
         return;
     }
 
@@ -41,5 +41,15 @@ class PaintTools{
 
     function bool getColor () {
         return color;
+    }
+
+    function void changeColor () {
+        let color = ~color;
+        return;
+    }
+
+    function void setInstrument(int num) {
+        let instrument = num;
+        return;
     }
 }
