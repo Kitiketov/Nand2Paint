@@ -1,25 +1,33 @@
 class DrawUI {  
-     
+	static String NameOfX;
+	static String NameOfY;	
+    static String NameOfSpace;
+	static String NameOfSize;
+	static String NameOfInstrument;
+	static String NameOfColor;
+	static String NameOfBlack;
+	static String NameOfWhite;
 
     function void PrintPosition (int x, int y, int size, int instrument, bool color) {
+		
         do Output.moveCursor(22, 0);
-        do Output.printString("x: ");
+        do Output.printString(NameOfX);
         do Output.printInt(x);
-        do Output.printString("y: ");
+        do Output.printString(NameOfY);
         do Output.printInt(y);
-        do Output.printString("  ");
-        do Output.printString("size: ");
+        do Output.printString(NameOfSpace);
+        do Output.printString(NameOfSize);
         do Output.printInt(size);
-        do Output.printString("  ");
-        do Output.printString("instrument: ");
+        do Output.printString(NameOfSpace);
+        do Output.printString(NameOfInstrument);
         do Output.printInt(instrument);
-        do Output.printString("  ");
-        do Output.printString("color: ");
+        do Output.printString(NameOfSpace);
+        do Output.printString(NameOfColor);
         if (color) {
-            do Output.printString("black");
+            do Output.printString(NameOfBlack);
         }
         if (color = false) {
-            do Output.printString("white");
+            do Output.printString(NameOfWhite);
         }
         return;
     }
@@ -42,6 +50,15 @@ class DrawUI {
 
     function void DrawUI () {
     var int memAddress; 
+	let NameOfX = "x: ";
+	let NameOfY = "y: ";
+	let NameOfSpace = "  "
+	let NameOfSize = "size: ";
+	let NameOfInstrument = "instrument: ";
+	let NameOfColor = "color: ";
+	let NameOfBlack = "black";
+	let NameOfWhite = "white";
+
 	let memAddress = 16384;
 	// column 0
 	do Memory.poke(memAddress, -1);
