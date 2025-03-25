@@ -8,8 +8,7 @@ class DrawUI {
 	static String NameOfBlack;
 	static String NameOfWhite;
 
-    function void PrintPosition (int x, int y, int size, int instrument, bool color) {
-		
+    function void PrintPosition (int x, int y) {
         do Output.moveCursor(22, 0);
         do Output.printString(NameOfX);
         do Output.printInt(x);
@@ -32,19 +31,49 @@ class DrawUI {
         return;
     }
 
-    function void updatePosition (Vector pos) {
-        do DrawUI.CleanPrintedPosition();
-        do DrawUI.PrintPosition(pos.getX(), pos.getY(), 1, 1, true);
-        return;
-    }    
-
-    function void CleanPrintedPosition () {
+	
+    function void cleanPrintedPosition() {
         var int y;
         let y = 241;
         while (y < 256) {
-            do Screen.drawLine(1, y, 511, y);
+            do Screen.drawLine(1, y, 200, y);
             let y = y + 1;
         }
+        return;
+    }
+
+	    function void loadPixelUnderCursor(Vector position, Array underCursor){
+		do Screen.setColor(underCursor[0]);
+		do Screen.drawPixel(position.getX(), position.getY()-1);
+		do Screen.setColor(underCursor[1]);
+		do Screen.drawPixel(position.getX()+1, position.getY());
+		do Screen.setColor(underCursor[2]);
+		do Screen.drawPixel(position.getX(), position.getY()+1);
+		do Screen.setColor(underCursor[3]);
+		do Screen.drawPixel(position.getX()-1, position.getY());
+		return;
+    }
+
+	function void updatePosition (Vector pos) {
+        do DrawUI.cleanPrintedPosition();
+        do DrawUI.PrintPosition(pos.getX(), pos.getY());
+        return;
+    }
+
+	function void drawCursor(Vector position){
+		do Screen.setColor(true);
+		do Screen.drawPixel(position.getX()+1, position.getY());
+		do Screen.drawPixel(position.getX()-1, position.getY());
+		do Screen.drawPixel(position.getX(), position.getY()+1);
+		do Screen.drawPixel(position.getX(), position.getY()-1);
+		return;
+    }
+    function void cleanCursor(Vector position){
+        do Screen.setColor(false);
+        do Screen.drawPixel(position.getX()+1, position.getY());
+        do Screen.drawPixel(position.getX()-1, position.getY());
+        do Screen.drawPixel(position.getX(), position.getY()+1);
+        do Screen.drawPixel(position.getX(), position.getY()-1);
         return;
     }
 

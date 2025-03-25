@@ -3,27 +3,13 @@ push constant 22
 push constant 0
 call Output.moveCursor 2
 pop temp 0
-push constant 3
-call String.new 1
-push constant 120
-call String.appendChar 2
-push constant 58
-call String.appendChar 2
-push constant 32
-call String.appendChar 2
+push static 0
 call Output.printString 1
 pop temp 0
 push argument 0
 call Output.printInt 1
 pop temp 0
-push constant 3
-call String.new 1
-push constant 121
-call String.appendChar 2
-push constant 58
-call String.appendChar 2
-push constant 32
-call String.appendChar 2
+push static 1
 call Output.printString 1
 pop temp 0
 push argument 1
@@ -163,6 +149,7 @@ pop temp 0
 label IF_FALSE1
 push constant 0
 return
+function DrawUI.cleanPrintedPosition 1
 function DrawUI.updatePosition 0
 call DrawUI.CleanPrintedPosition 0
 pop temp 0
@@ -187,9 +174,13 @@ push constant 256
 lt
 not
 if-goto WHILE_END0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
 push constant 1
 push local 0
-push constant 511
+push constant 200
 push local 0
 call Screen.drawLine 4
 pop temp 0
@@ -201,7 +192,176 @@ goto WHILE_EXP0
 label WHILE_END0
 push constant 0
 return
+function DrawUI.loadPixelUnderCursor 0
+push constant 0
+push argument 1
+add
+pop pointer 1
+push that 0
+call Screen.setColor 1
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push constant 1
+push argument 1
+add
+pop pointer 1
+push that 0
+call Screen.setColor 1
+pop temp 0
+push argument 0
+call Vector.getX 1
+push constant 1
+add
+push argument 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push constant 2
+push argument 1
+add
+pop pointer 1
+push that 0
+call Screen.setColor 1
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push constant 3
+push argument 1
+add
+pop pointer 1
+push that 0
+call Screen.setColor 1
+pop temp 0
+push argument 0
+call Vector.getX 1
+push constant 1
+sub
+push argument 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push constant 0
+return
+function DrawUI.updatePosition 0
+call DrawUI.cleanPrintedPosition 0
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+call DrawUI.PrintPosition 2
+pop temp 0
+push constant 0
+return
+function DrawUI.drawCursor 0
+push constant 0
+not
+call Screen.setColor 1
+pop temp 0
+push argument 0
+call Vector.getX 1
+push constant 1
+add
+push argument 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push argument 0
+call Vector.getX 1
+push constant 1
+sub
+push argument 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push constant 0
+return
+function DrawUI.cleanCursor 0
+push constant 0
+call Screen.setColor 1
+pop temp 0
+push argument 0
+call Vector.getX 1
+push constant 1
+add
+push argument 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push argument 0
+call Vector.getX 1
+push constant 1
+sub
+push argument 0
+call Vector.getY 1
+call Screen.drawPixel 2
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+push constant 1
+add
+call Screen.drawPixel 2
+pop temp 0
+push argument 0
+call Vector.getX 1
+push argument 0
+call Vector.getY 1
+push constant 1
+sub
+call Screen.drawPixel 2
+pop temp 0
+push constant 0
+return
 function DrawUI.DrawUI 1
+push constant 3
+call String.new 1
+push constant 120
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+pop static 0
+push constant 3
+call String.new 1
+push constant 121
+call String.appendChar 2
+push constant 58
+call String.appendChar 2
+push constant 32
+call String.appendChar 2
+pop static 1
 push constant 16384
 pop local 0
 push local 0
