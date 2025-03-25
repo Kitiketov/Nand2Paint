@@ -23,11 +23,12 @@ class Main
 
     function void main()
    {
+        var int key, tick;
 
-        do Screen.setColor(true);
-		do Screen.drawPixel(15, 1);
-        do Screen.setColor(Cursor.getColor(15,1));
-        do Screen.drawPixel(16,16);
+        // do Screen.setColor(true);
+		// do Screen.drawPixel(15, 1);
+        // do Screen.setColor(Cursor.getColor(15,1));
+        // do Screen.drawPixel(16,16);
 
         // do Screen.setColor(true);
 		// do Screen.drawPixel(0, 0);
@@ -35,15 +36,13 @@ class Main
         // do Screen.drawPixel(16,16);
         // return;
 
-        var int key, tick;
-        do Cursor.init();
-
-        let paintTools = PaintTools.new();
         do DrawUI.DrawUI();
+        do Cursor.init();
         do DrawUI.updatePosition(Cursor.getPosition());        
+        do paintTools.init();
 
         while (true){
-            if (tick = 2500){
+            if (tick = 2000){
             let key = Keyboard.keyPressed();
             if (startDrawing){
                 if (Cursor.prevIsNone()){
@@ -55,9 +54,16 @@ class Main
             if (key = 65) {do Cursor.moveDirection(Vector.new(-1,0));}
             if (key = 83) {do Cursor.moveDirection(Vector.new(0,1));}
             if (key = 68) {do Cursor.moveDirection(Vector.new(1,0));}
-            if (startDrawing = true) {do paintTools.tryDraw();}
+            if (key = 49) {do PaintTools.changeColor();}
+            if (key = 50) {do PaintTools.setInstrument(2);}
+            if (key = 51) {do PaintTools.setInstrument(3);}
+            if (key = 52) {do PaintTools.setInstrument(4);}
+            if (key = 53) {do PaintTools.setInstrument(5);}
+            if (key = 54) {do PaintTools.setInstrument(6);}
+            if (key = 55) {do PaintTools.setInstrument(7);}
             let tick = 0;
             }
+            if (startDrawing = true) {do paintTools.tryDraw();}
             let tick = tick + 1;
         }
         return;
