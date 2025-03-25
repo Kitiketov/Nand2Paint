@@ -1,10 +1,7 @@
 class Pen{
-      constructor Pen new() {
-        return this;
-        }
-        method void drawPixel(int color,int x, int y){
+        function void drawPixel(bool color,int x, int y){
             do Screen.setColor(color);
-            //do Screen.drawPixel(x,y);
+            do Screen.drawPixel(x,y);
             return;
         }
 }
