@@ -15,12 +15,21 @@ class Cursor{
         return this;
     }
     method void moveDirection(Vector direction){
-        do cleanCursor();
-        let position = position.add(direction);
-        do DrawUI.updatePosition(position);
-        do drawCursor();
+        var int newX, newY;
+        let newX = position.getX() + direction.getX();
+        let newY = position.getY() + direction.getY();
+        if (isValidMoveDirection(newX, newY)){
+            do cleanCursor();
+            let position = position.add(direction);
+            do DrawUI.updatePosition(position);
+            do drawCursor();
+        }
         return;
     }
+    method bool isValidMoveDirection(int x, int y){
+        return ((x > -1) & (x < 513) & (y > -1) & (y < 225));
+    }
+
     method void drawCursor(){
         do Screen.setColor(true);
         do Screen.drawPixel(position.getX()+1, position.getY());
