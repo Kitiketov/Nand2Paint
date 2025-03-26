@@ -1,0 +1,30 @@
+class Circle {
+    function void draw (Vector start, Vector end,bool color,bool isFill) {
+        var int x, y, x1, x2, y1, y2, r, midX, midY, qx, qy;
+        let x1 = start.getX();
+        let y1 = start.getY();
+        if (x1 = -1 & y1 = -1){
+            return;
+        }
+        let x2 = end.getX();
+        let y2 = end.getY();
+        do Screen.setColor(color);
+        let x = Math.max(x1, x2) - Math.min(x1, x2);
+        let y = Math.max(y1, y2) - Math.min(y1, y2);
+        let qx = x * x;
+        let qy = y * y;        
+        let r = Math.sqrt(qx + qy) / 2 - 1;
+        let midX = x1 + x2;
+        let midX = midX / 2;
+        let midY = y1 + y2;
+        let midY = midY / 2;
+        do Screen.drawCircle(midX, midY, r);
+        if (isFill = 0){
+            do Screen.setColor(~color);
+            let r = r - 1;
+            do Screen.drawCircle(midX, midY, r);
+        }
+        
+        return;
+    }
+}

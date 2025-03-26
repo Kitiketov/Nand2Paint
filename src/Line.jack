@@ -1,0 +1,15 @@
+class Line {
+    function void draw (Vector start, Vector end, bool color) {
+        var int x1, y1, x2, y2;
+        let x1 = start.getX();
+        let y1 = start.getY();
+        if (x1 = -1 & y1 = -1){
+            return;
+        }
+        let x2 = end.getX();
+        let y2 = end.getY();
+        do Screen.setColor(color);
+        do Screen.drawLine(x1, y1, x2, y2);
+        return;
+    }
+}

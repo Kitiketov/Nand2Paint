@@ -49,6 +49,15 @@ class PaintTools{
             do Square.draw(Cursor.getPrevPosition(),pos,color,true);
             do DrawUI.drawCursor(pos);
         }
+        if (instrument = 5){
+            do Line.draw(Cursor.getPrevPosition(),pos,color);
+        }
+        if (instrument = 6){
+            do Circle.draw(Cursor.getPrevPosition(),pos,color,false);
+        }
+        if (instrument = 7){
+            do Circle.draw(Cursor.getPrevPosition(),pos,color,true);
+        }
         return;
     }
 
