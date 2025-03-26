@@ -1,13 +1,20 @@
 class Square{
     function void draw(Vector start, Vector end,bool color,bool isFill){
-        var int x1,x2,y1,y2;
+        var int x1,x2,y1,y2, xx1, yy1, xx2, yy2;
         let x1 = start.getX();
         let y1 = start.getY();
+        if (x1 = -1 & y1 = -1){
+            return;
+        }
         let x2 = end.getX();
         let y2 = end.getY();
         do Screen.setColor(color);
         if (isFill){
-            do Screen.drawRectangle(x1,y1,x2,y2);
+            let xx1 = Math.min(x1, x2);
+            let xx2 = Math.max(x1, x2);
+            let yy1 = Math.min(y1, y2);
+            let yy2 = Math.max(y1, y2);
+            do Screen.drawRectangle(xx1,yy1,xx2,yy2);
         }
         else{
             do Screen.drawLine(x1,y1,x2,y1);
