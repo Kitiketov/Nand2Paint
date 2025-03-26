@@ -45,7 +45,7 @@ class Main
             if (tick = 2000){
             let key = Keyboard.keyPressed();
             if (key = 0 ) {let keyFlag = true;}
-            if (key = 32 & keyFlag) {let startDrawing = ~startDrawing; let keyFlag = false; do Cursor.savePosition(); let isMoving = true;}
+            if (key = 32 & keyFlag) {let startDrawing = ~startDrawing; let keyFlag = false; do Cursor.savePosition(); let isMoving = true; do DrawUI.updatePosition();}
             if (key = 87) {do Cursor.moveDirection(Vector.new(0,-1)); let isMoving = true;}
             if (key = 65) {do Cursor.moveDirection(Vector.new(-1,0)); let isMoving = true;}
             if (key = 83) {do Cursor.moveDirection(Vector.new(0,1)); let isMoving = true;}
@@ -67,5 +67,10 @@ class Main
             let tick = tick + 1;
         }
         return;
+   }
+
+
+   function bool isStartDrawing () {
+     return startDrawing;
    }
 }

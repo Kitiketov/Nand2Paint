@@ -6,7 +6,10 @@ class PaintTools{
     function void editSize (int delta) {
         var Vector pos;
         let pos = Cursor.getPosition();
-        if (size = 30 ){
+        if (size = 30 & delta > 0){
+            return;
+        }
+        if (size = 1 & delta < 0){
             return;
         }
         do DrawUI.cleanCursor(pos);

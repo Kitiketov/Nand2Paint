@@ -8,6 +8,7 @@ class DrawUI {
 	static String NameOfBlack;
 	static String NameOfWhite;
 	static String Cleaner;
+	static String NameOfIsDrawing;
 
     function void PrintPosition (int x, int y) {
         do Output.moveCursor(22, 0);
@@ -29,6 +30,15 @@ class DrawUI {
         else {
             do Output.printString(NameOfWhite);
         }
+		do Output.printString(NameOfSpace);
+		do Output.printString(NameOfIsDrawing);
+		if (Main.isStartDrawing()){
+			do Output.printString("true");
+			do Output.printString(NameOfSpace);
+		}
+		else {
+			do Output.printString("false");
+		}
         return;
     }
 
@@ -109,16 +119,16 @@ class DrawUI {
 
 	function void DrawUI () {
 		var int memAddress; 
-	let NameOfX = "x: ";
-	let NameOfY = "y: ";
-	let NameOfSpace = "  ";
-	let NameOfSize = "size: ";
-	let NameOfInstrument = "instrument: ";
-	let NameOfColor = "color: ";
+	let NameOfX = "x:";
+	let NameOfY = "y:";
+	let NameOfSpace = " ";
+	let NameOfSize = "size:";
+	let NameOfInstrument = "instrument:";
+	let NameOfColor = "color:";
 	let NameOfBlack = "black";
 	let NameOfWhite = "white";
-	let Cleaner = "                                                    ";
-
+	let Cleaner = "                                                         ";
+	let NameOfIsDrawing = "isDrawing:";
 	let memAddress = 16384;
 	// column 0
 	do Memory.poke(memAddress, -1);
