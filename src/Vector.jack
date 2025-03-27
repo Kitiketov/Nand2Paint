@@ -7,9 +7,11 @@ class Vector {
         let y = yy;
         return this;
     }
+
     method int getX(){
         return x;
     }
+
     method int getY(){
         return y;
     }
@@ -19,8 +21,9 @@ class Vector {
         let y = y + other.getY();
         return this;
     }
+
     method void dispose(){
         do Memory.deAlloc(this);
         return;
-       }   
+    }   
 }
