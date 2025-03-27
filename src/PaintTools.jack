@@ -1,31 +1,49 @@
 class PaintTools{
-    static Pen pen;
     static int size;
     static int instrument;
     static bool color;
 
-    // constructor PaintTools new() {
-    //     // let pen = Pen.new();
-    //     // let size = 1;
-    //     // let color = true;
-    //     // let instrument = 0;
+    function void editSize (int delta) {
+        var Vector pos;
+        let pos = Cursor.getPosition();
+        if (size = 30 ){
+            return;
+        }
+        do DrawUI.cleanCursor(pos);
+        do DrawUI.loadPixelUnderCursor(pos);
+        let size = size + delta;
+        do Cursor.savePixelUnderCursor();
+        do DrawUI.drawCursor(pos);
+        return;
+    }
 
-    //     return this;
-    // }
+
 
     function void init () {
-        // let pen = Pen.new();
         let size = 1;
         let color = true;
         let instrument = 2;
         return;
     }
 
-    method void tryDraw(){
+    function void tryDraw(){
         var Vector pos;
         let pos = Cursor.getPosition();
-        if (instrument = 0){
-            do pen.drawPixel(color, pos.getX(),pos.getY());
+        if (instrument = 2){
+            do Pen.draw(pos, color, size);
+            do DrawUI.drawCursor(pos);
+        }
+        return;
+    }
+    function void tryRelize(){
+        var Vector pos;
+        let pos = Cursor.getPosition();
+        if (instrument = 3){
+            do Square.draw(Cursor.getPrevPosition(),pos,color,false);
+            do DrawUI.drawCursor(pos);
+        }
+        if (instrument = 4){
+            do Square.draw(Cursor.getPrevPosition(),pos,color,true);
             do DrawUI.drawCursor(pos);
         }
         return;

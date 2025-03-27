@@ -2,23 +2,31 @@ class Cursor{
     static Vector position;
         static Array underCursor;
             static Vector prevPosition;
-                static bool hasPrev;
 
 
     function void init()
     {
         let prevPosition = Vector.new(-1, -1);
-        let underCursor = Array.new(4);
+        let underCursor = Array.new(8);
         let position = Vector.new(16, 16);
-        let hasPrev = false;
         do DrawUI.drawCursor(position);
         return;
     }
     function void savePixelUnderCursor(){
+        var int x,y,size;
+        let x = position.getX();
+        let y = position.getY();
+        let size = PaintTools.getSize()-1;
+
         let underCursor[0] = Cursor.getColor(position.getX(), position.getY()-1);
         let underCursor[1] = Cursor.getColor(position.getX()+1, position.getY());
         let underCursor[2] = Cursor.getColor(position.getX(), position.getY()+1);
         let underCursor[3] = Cursor.getColor(position.getX()-1, position.getY());
+
+        let underCursor[4] = Cursor.getColor(position.getX(), position.getY()-1-size);
+        let underCursor[5] = Cursor.getColor(position.getX()+1+size, position.getY());
+        let underCursor[6] = Cursor.getColor(position.getX(), position.getY()+1+size);
+        let underCursor[7] = Cursor.getColor(position.getX()-1-size, position.getY());
         return;
     }
 
@@ -27,12 +35,13 @@ class Cursor{
         var int address, bitMask, pixelWord, a,b,c;
         let a = (32 * y);
         let b = (x / 16);
-        let c = b*16 - x ;
+        let c = -b*16 + x ;
         let address = 16384 + a + b;
         let pixelWord = Memory.peek(address);
-        do Output.printInt(pixelWord);
-        do Output.printInt(888);
-        do Output.printInt(Main.binPow(2,c));
+
+        if (c=15 & pixelWord <0){
+            return true;
+        }
         let bitMask = Main.binPow(2,c); 
         return ~((pixelWord & bitMask) = 0);
     }
@@ -44,9 +53,9 @@ class Cursor{
         if (Cursor.isValidMoveDirection(newX, newY)){
 
             do DrawUI.cleanCursor(position);
-            do DrawUI.loadPixelUnderCursor(position, underCursor);
+            do DrawUI.loadPixelUnderCursor(position);
             let position = position.add(direction);
-            do DrawUI.updatePosition(position);
+            do DrawUI.updatePosition();
             do Cursor.savePixelUnderCursor();
             do DrawUI.drawCursor(position);
         }
@@ -55,30 +64,28 @@ class Cursor{
     }
 
     function bool isValidMoveDirection(int x, int y){
-        return ((x > 0) & (x < 511) & (y > 0) & (y < 254));
-        //return ((x > 0) & (x < 511) & (y > 16) & (y < 238));
+        var int size;
+        let size = PaintTools.getSize()-1;
+        //return ((x > 0) & (x < 511) & (y > 0) & (y < 254));
+        return ((x-size > 0) & (x+size < 511) & (y-size > 16) & (y+size < 238));
     }
 
 
     function  void savePosition(){
-        let prevPosition = position;
-        let hasPrev = true;
+        do prevPosition.dispose();
+        let prevPosition = Vector.new(position.getX(),position.getY());
         return;
     }
 
-    function bool prevIsNone(){
-        return hasPrev;
-    }
-
-    function int getPositionX(){
-        return position.getX();
-    }
-
-    function int getPositionY(){
-        return position.getY();
-    }
-
-    function int getPosition(){
+    function Vector getPosition(){
         return position;
     }
+
+    function Vector getPrevPosition(){
+        return prevPosition;
+    }
+    function Array getUnderCursor(){
+        return underCursor;
+    }
+
 }

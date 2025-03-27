@@ -1,0 +1,22 @@
+class Square{
+    function void draw(Vector start, Vector end,bool color,bool isFill){
+        var int x1,x2,y1,y2;
+        let x1 = start.getX();
+        let y1 = start.getY();
+        let x2 = end.getX();
+        let y2 = end.getY();
+        do Screen.setColor(color);
+        if (isFill){
+            do Screen.drawRectangle(x1,y1,x2,y2);
+        }
+        else{
+            do Screen.drawLine(x1,y1,x2,y1);
+            do Screen.drawLine(x1,y1,x1,y2);
+            do Screen.drawLine(x2,y1,x2,y2);
+            do Screen.drawLine(x1,y2,x2,y2);
+        }
+        
+        
+        return;
+    }
+}

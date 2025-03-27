@@ -5,21 +5,29 @@ push constant 1
 neg
 call Vector.new 2
 pop static 2
-push constant 4
+push constant 8
 call Array.new 1
 pop static 1
 push constant 16
 push constant 16
 call Vector.new 2
 pop static 0
-push constant 0
-pop static 3
 push static 0
 call DrawUI.drawCursor 1
 pop temp 0
 push constant 0
 return
-function Cursor.savePixelUnderCursor 0
+function Cursor.savePixelUnderCursor 3
+push static 0
+call Vector.getX 1
+pop local 0
+push static 0
+call Vector.getY 1
+pop local 1
+call PaintTools.getSize 0
+push constant 1
+sub
+pop local 2
 push constant 0
 push static 1
 add
@@ -76,6 +84,70 @@ pop temp 0
 pop pointer 1
 push temp 0
 pop that 0
+push constant 4
+push static 1
+add
+push static 0
+call Vector.getX 1
+push static 0
+call Vector.getY 1
+push constant 1
+sub
+push local 2
+sub
+call Cursor.getColor 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 5
+push static 1
+add
+push static 0
+call Vector.getX 1
+push constant 1
+add
+push local 2
+add
+push static 0
+call Vector.getY 1
+call Cursor.getColor 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 6
+push static 1
+add
+push static 0
+call Vector.getX 1
+push static 0
+call Vector.getY 1
+push constant 1
+add
+push local 2
+add
+call Cursor.getColor 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push constant 7
+push static 1
+add
+push static 0
+call Vector.getX 1
+push constant 1
+sub
+push local 2
+sub
+push static 0
+call Vector.getY 1
+call Cursor.getColor 2
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
 push constant 0
 return
 function Cursor.getColor 6
@@ -88,10 +160,11 @@ push constant 16
 call Math.divide 2
 pop local 4
 push local 4
+neg
 push constant 16
 call Math.multiply 2
 push argument 0
-sub
+add
 pop local 5
 push constant 16384
 push local 3
@@ -102,17 +175,20 @@ pop local 0
 push local 0
 call Memory.peek 1
 pop local 2
-push local 2
-call Output.printInt 1
-pop temp 0
-push constant 888
-call Output.printInt 1
-pop temp 0
-push constant 2
 push local 5
-call Main.binPow 2
-call Output.printInt 1
-pop temp 0
+push constant 15
+eq
+push local 2
+and
+push constant 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+not
+return
+label IF_FALSE0
 push constant 2
 push local 5
 call Main.binPow 2
@@ -147,15 +223,13 @@ push static 0
 call DrawUI.cleanCursor 1
 pop temp 0
 push static 0
-push static 1
-call DrawUI.loadPixelUnderCursor 2
+call DrawUI.loadPixelUnderCursor 1
 pop temp 0
 push static 0
 push argument 0
 call Vector.add 2
 pop static 0
-push static 0
-call DrawUI.updatePosition 1
+call DrawUI.updatePosition 0
 pop temp 0
 call Cursor.savePixelUnderCursor 0
 pop temp 0
@@ -168,42 +242,53 @@ call Vector.dispose 1
 pop temp 0
 push constant 0
 return
-function Cursor.isValidMoveDirection 0
+function Cursor.isValidMoveDirection 1
+call PaintTools.getSize 0
+push constant 1
+sub
+pop local 0
 push argument 0
+push local 0
+sub
 push constant 0
 gt
 push argument 0
+push local 0
+add
 push constant 511
 lt
 and
 push argument 1
-push constant 0
+push local 0
+sub
+push constant 16
 gt
 and
 push argument 1
-push constant 254
+push local 0
+add
+push constant 238
 lt
 and
 return
 function Cursor.savePosition 0
-push static 0
-pop static 2
-push constant 0
-not
-pop static 3
-push constant 0
-return
-function Cursor.prevIsNone 0
-push static 3
-return
-function Cursor.getPositionX 0
+push static 2
+call Vector.dispose 1
+pop temp 0
 push static 0
 call Vector.getX 1
-return
-function Cursor.getPositionY 0
 push static 0
 call Vector.getY 1
+call Vector.new 2
+pop static 2
+push constant 0
 return
 function Cursor.getPosition 0
 push static 0
+return
+function Cursor.getPrevPosition 0
+push static 2
+return
+function Cursor.getUnderCursor 0
+push static 1
 return

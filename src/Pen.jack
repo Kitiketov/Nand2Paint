@@ -1,10 +1,19 @@
 class Pen{
-      constructor Pen new() {
-        return this;
-        }
-        method void drawPixel(int color,int x, int y){
+        function void draw(Vector pos, bool color, int size){
+          var bool check1,check2, check3, check4;
+          var int x,y;
+          let x = pos.getX();
+          let y = pos.getY();
+          let size = size - 1;
+          let check1 = Cursor.isValidMoveDirection(x,y);
+          let check2 = Cursor.isValidMoveDirection(x,y);
+          let check3 = Cursor.isValidMoveDirection(x,y);
+          let check4 = Cursor.isValidMoveDirection(x,y);
+          if (check1){if(check2){if(check3){if(check4){
             do Screen.setColor(color);
-            //do Screen.drawPixel(x,y);
-            return;
+            do Screen.drawCircle(x,y,size);
+          }}}}
+            
+          return;
         }
 }

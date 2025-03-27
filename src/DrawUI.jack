@@ -7,6 +7,7 @@ class DrawUI {
 	static String NameOfColor;
 	static String NameOfBlack;
 	static String NameOfWhite;
+	static String Cleaner;
 
     function void PrintPosition (int x, int y) {
         do Output.moveCursor(22, 0);
@@ -31,50 +32,83 @@ class DrawUI {
         return;
     }
 
-	
+  
     function void cleanPrintedPosition() {
         do Output.moveCursor(22, 0);
-		do Output.printString("                                                    ");
+    do Output.printString(Cleaner);
         return;
     }
 
-	    function void loadPixelUnderCursor(Vector position, Array underCursor){
-		do Screen.setColor(underCursor[0]);
-		do Screen.drawPixel(position.getX(), position.getY()-1);
-		do Screen.setColor(underCursor[1]);
-		do Screen.drawPixel(position.getX()+1, position.getY());
-		do Screen.setColor(underCursor[2]);
-		do Screen.drawPixel(position.getX(), position.getY()+1);
-		do Screen.setColor(underCursor[3]);
-		do Screen.drawPixel(position.getX()-1, position.getY());
+
+	    function void loadPixelUnderCursor(Vector position){
+			var int x,y,size;
+			var Array underCursor;
+			let underCursor= Cursor.getUnderCursor();
+			let x = position.getX();
+			let y = position.getY();
+			let size = PaintTools.getSize()-1;
+			
+			do Screen.setColor(underCursor[0]);
+			do Screen.drawPixel(x, y-1);
+			do Screen.setColor(underCursor[1]);
+			do Screen.drawPixel(x+1, y);
+			do Screen.setColor(underCursor[2]);
+			do Screen.drawPixel(x, y+1);
+			do Screen.setColor(underCursor[3]);
+			do Screen.drawPixel(x-1, y);
+
+
+			do Screen.setColor(underCursor[4]);
+			do Screen.drawPixel(x, y-1-size);
+			do Screen.setColor(underCursor[5]);
+			do Screen.drawPixel(x+1+size, y);
+			do Screen.setColor(underCursor[6]);
+			do Screen.drawPixel(x, y+1+size);
+			do Screen.setColor(underCursor[7]);
+			do Screen.drawPixel(x-1-size, y);
 		return;
     }
 
-	function void updatePosition (Vector pos) {
-        do DrawUI.cleanPrintedPosition();
-        do DrawUI.PrintPosition(pos.getX(), pos.getY());
-        return;
-    }
+	function void updatePosition () {
+		var Vector pos;
+		let pos = Cursor.getPosition();
+			do DrawUI.cleanPrintedPosition();
+			do DrawUI.PrintPosition(pos.getX(), pos.getY());
+			return;
+		}
 
 	function void drawCursor(Vector position){
+		var int x,y,size;
+		let x = position.getX();
+		let y = position.getY();
+		let size = PaintTools.getSize()-1;
+		
 		do Screen.setColor(true);
-		do Screen.drawPixel(position.getX()+1, position.getY());
-		do Screen.drawPixel(position.getX()-1, position.getY());
-		do Screen.drawPixel(position.getX(), position.getY()+1);
-		do Screen.drawPixel(position.getX(), position.getY()-1);
+		do Screen.drawPixel(x+1, y);
+		do Screen.drawPixel(x-1, y);
+		do Screen.drawPixel(x, y+1);
+		do Screen.drawPixel(x, y-1);
+
+		do Screen.drawPixel(x, y-1-size);
+		do Screen.drawPixel(x+1+size, y);
+		do Screen.drawPixel(x, y+1+size);
+		do Screen.drawPixel(x-1-size, y);
 		return;
     }
     function void cleanCursor(Vector position){
-        do Screen.setColor(false);
-        do Screen.drawPixel(position.getX()+1, position.getY());
-        do Screen.drawPixel(position.getX()-1, position.getY());
-        do Screen.drawPixel(position.getX(), position.getY()+1);
-        do Screen.drawPixel(position.getX(), position.getY()-1);
+        var int x,y;
+		let x = position.getX();
+		let y = position.getY();
+		do Screen.setColor(false);
+		do Screen.drawPixel(x+1, y);
+		do Screen.drawPixel(x-1, y);
+		do Screen.drawPixel(x, y+1);
+		do Screen.drawPixel(x, y-1);
         return;
     }
 
-    function void DrawUI () {
-    var int memAddress; 
+	function void DrawUI () {
+		var int memAddress; 
 	let NameOfX = "x: ";
 	let NameOfY = "y: ";
 	let NameOfSpace = "  ";
@@ -83,6 +117,7 @@ class DrawUI {
 	let NameOfColor = "color: ";
 	let NameOfBlack = "black";
 	let NameOfWhite = "white";
+	let Cleaner = "                                                    ";
 
 	let memAddress = 16384;
 	// column 0
