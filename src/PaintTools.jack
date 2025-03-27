@@ -6,7 +6,10 @@ class PaintTools{
     function void editSize (int delta) {
         var Vector pos;
         let pos = Cursor.getPosition();
-        if (size = 30 ){
+        if (size = 30 & delta > 0){
+            return;
+        }
+        if (size = 1 & delta < 0){
             return;
         }
         do DrawUI.cleanCursor(pos);
@@ -45,6 +48,15 @@ class PaintTools{
         if (instrument = 4){
             do Square.draw(Cursor.getPrevPosition(),pos,color,true);
             do DrawUI.drawCursor(pos);
+        }
+        if (instrument = 5){
+            do Line.draw(Cursor.getPrevPosition(),pos,color);
+        }
+        if (instrument = 6){
+            do Circle.draw(Cursor.getPrevPosition(),pos,color,false);
+        }
+        if (instrument = 7){
+            do Circle.draw(Cursor.getPrevPosition(),pos,color,true);
         }
         return;
     }
