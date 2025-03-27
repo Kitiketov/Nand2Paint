@@ -1,0 +1,86 @@
+function Square.draw 8
+push argument 0
+call Vector.getX 1
+pop local 0
+push argument 0
+call Vector.getY 1
+pop local 2
+push local 0
+push constant 1
+neg
+eq
+push local 2
+and
+push constant 1
+neg
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push argument 1
+call Vector.getX 1
+pop local 1
+push argument 1
+call Vector.getY 1
+pop local 3
+push argument 2
+call Screen.setColor 1
+pop temp 0
+push argument 3
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push local 0
+push local 1
+call Math.min 2
+pop local 4
+push local 0
+push local 1
+call Math.max 2
+pop local 6
+push local 2
+push local 3
+call Math.min 2
+pop local 5
+push local 2
+push local 3
+call Math.max 2
+pop local 7
+push local 4
+push local 5
+push local 6
+push local 7
+call Screen.drawRectangle 4
+pop temp 0
+goto IF_END1
+label IF_FALSE1
+push local 0
+push local 2
+push local 1
+push local 2
+call Screen.drawLine 4
+pop temp 0
+push local 0
+push local 2
+push local 0
+push local 3
+call Screen.drawLine 4
+pop temp 0
+push local 1
+push local 2
+push local 1
+push local 3
+call Screen.drawLine 4
+pop temp 0
+push local 0
+push local 3
+push local 1
+push local 3
+call Screen.drawLine 4
+pop temp 0
+label IF_END1
+push constant 0
+return
