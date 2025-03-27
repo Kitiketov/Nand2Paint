@@ -4,8 +4,10 @@ class PaintTools{
     static bool color;
 
     function void editSize (int delta) {
+        //Функция для изменения размера кисти
         var Vector pos;
         let pos = Cursor.getPosition();
+        // Проверка на выход за пределы изменения кисти 1..30
         if (size = 30 & delta > 0){
             return;
         }
@@ -20,8 +22,6 @@ class PaintTools{
         return;
     }
 
-
-
     function void init () {
         let size = 1;
         let color = true;
@@ -30,33 +30,37 @@ class PaintTools{
     }
 
     function void tryDraw(){
+        // Функция для попытки использовать карандаш
         var Vector pos;
-        let pos = Cursor.getPosition();
         if (instrument = 2){
+            let pos = Cursor.getPosition();
             do Pen.draw(pos, color, size);
             do DrawUI.drawCursor(pos);
         }
         return;
     }
+
     function void tryRelize(){
-        var Vector pos;
+        // Функция для рисования фигур
+        var Vector pos, prevPos;
+
         let pos = Cursor.getPosition();
+        let prevPos = Cursor.getPrevPosition();
+
         if (instrument = 3){
-            do Square.draw(Cursor.getPrevPosition(),pos,color,false);
-            do DrawUI.drawCursor(pos);
+            do Square.draw(prevPos, pos, color, false);
         }
         if (instrument = 4){
-            do Square.draw(Cursor.getPrevPosition(),pos,color,true);
-            do DrawUI.drawCursor(pos);
+            do Square.draw(prevPos, pos, color, true);
         }
         if (instrument = 5){
-            do Line.draw(Cursor.getPrevPosition(),pos,color);
+            do Line.draw(prevPos, pos, color);
         }
         if (instrument = 6){
-            do Circle.draw(Cursor.getPrevPosition(),pos,color,false);
+            do Circle.draw(prevPos, pos, color, false);
         }
         if (instrument = 7){
-            do Circle.draw(Cursor.getPrevPosition(),pos,color,true);
+            do Circle.draw(prevPos, pos, color, true);
         }
         return;
     }

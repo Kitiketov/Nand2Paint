@@ -9,33 +9,26 @@ class Main
 
     function int binPow(int a, int n){
         var int p;
-        if (n=0){
+        if (n = 0){
             return 1;
         }
-        if (n/2*2*-1+n=1){
-            let p = Main.binPow(a,n-1)*a;
+        if (n / 2 * 2 * -1 + n = 1){
+            let p = Main.binPow(a, n - 1)*a;
             return p;
         }
         else{
-            let p = Main.binPow(a,n/2);
+            let p = Main.binPow(a, n / 2);
             let p = p * p;
             return p;
         }
     }
 
-
     function void main()
    {
         var int key, tick;
 
-        // do Screen.setColor(true);
-		// do Screen.drawPixel(15, 1);
-        // do Screen.setColor(Cursor.getColor(15,1));
-        // do Screen.drawPixel(16,16);
-        // return;
-
         do paintTools.init();
-        do DrawUI.DrawUI();
+        do DrawUI.init();
         do Cursor.init();
         do DrawUI.updatePosition();        
 
@@ -43,34 +36,46 @@ class Main
 
         while (true){
             if (tick = 2000){
-            let key = Keyboard.keyPressed();
-            if (key = 0 ) {let keyFlag = true;}
-            if (key = 32 & keyFlag) {let startDrawing = ~startDrawing; let keyFlag = false; do Cursor.savePosition(); let isMoving = true; do DrawUI.updatePosition();}
-            if (key = 87) {do Cursor.moveDirection(Vector.new(0,-1)); let isMoving = true;}
-            if (key = 65) {do Cursor.moveDirection(Vector.new(-1,0)); let isMoving = true;}
-            if (key = 83) {do Cursor.moveDirection(Vector.new(0,1)); let isMoving = true;}
-            if (key = 68) {do Cursor.moveDirection(Vector.new(1,0)); let isMoving = true;}
-            if (key = 49 & keyFlag) {do PaintTools.changeColor();let keyFlag = false; do DrawUI.updatePosition();}
-            if (key = 50) {do PaintTools.setInstrument(2); do DrawUI.updatePosition();}
-            if (key = 51) {do PaintTools.setInstrument(3); do DrawUI.updatePosition();}
-            if (key = 52) {do PaintTools.setInstrument(4); do DrawUI.updatePosition();}
-            if (key = 53) {do PaintTools.setInstrument(5); do DrawUI.updatePosition();}
-            if (key = 54) {do PaintTools.setInstrument(6); do DrawUI.updatePosition();}
-            if (key = 55) {do PaintTools.setInstrument(7); do DrawUI.updatePosition();}
-            if (key = 90 & keyFlag) {do PaintTools.editSize(1); let keyFlag = false; do DrawUI.updatePosition();}
-            if (key = 88 & keyFlag) {do PaintTools.editSize(-1); let keyFlag = false; do DrawUI.updatePosition();}
-            if (key = 69 & keyFlag) {do PaintTools.tryRelize(); let keyFlag = false; let startDrawing = false; do DrawUI.updatePosition();}
-            if (startDrawing = true & isMoving) {do PaintTools.tryDraw(); let isMoving = false;}
-            let tick = 0;
+
+                let key = Keyboard.keyPressed();
+                if (key = 0 ) {let keyFlag = true;}
+                // Начало использования инструмента рисования
+                if (key = 32 & keyFlag) {let startDrawing = ~startDrawing; let keyFlag = false; do Cursor.savePosition(); let isMoving = true; do DrawUI.updatePosition();}
+                // Движение WASD
+                if (key = 87) {do Cursor.moveDirection(Vector.new(0, -1)); let isMoving = true;}
+                if (key = 65) {do Cursor.moveDirection(Vector.new(-1, 0)); let isMoving = true;}
+                if (key = 83) {do Cursor.moveDirection(Vector.new(0, 1)); let isMoving = true;}
+                if (key = 68) {do Cursor.moveDirection(Vector.new(1, 0)); let isMoving = true;}
+                // Движение по горизонталям
+                if (key = 89) {do Cursor.moveDirection(Vector.new(-1, -1)); let isMoving = true;}
+                if (key = 85) {do Cursor.moveDirection(Vector.new(1, -1)); let isMoving = true;}
+                if (key = 72) {do Cursor.moveDirection(Vector.new(-1, 1)); let isMoving = true;}
+                if (key = 74) {do Cursor.moveDirection(Vector.new(1, 1)); let isMoving = true;}
+                // Смена цвета
+                if (key = 49 & keyFlag) {do PaintTools.changeColor(); let keyFlag = false; do DrawUI.updatePosition();}
+                // Выбор иструмента рисования
+                if (key = 50) {do PaintTools.setInstrument(2); do DrawUI.updatePosition();}
+                if (key = 51) {do PaintTools.setInstrument(3); do DrawUI.updatePosition();}
+                if (key = 52) {do PaintTools.setInstrument(4); do DrawUI.updatePosition();}
+                if (key = 53) {do PaintTools.setInstrument(5); do DrawUI.updatePosition();}
+                if (key = 54) {do PaintTools.setInstrument(6); do DrawUI.updatePosition();}
+                if (key = 55) {do PaintTools.setInstrument(7); do DrawUI.updatePosition();}
+                // Изменение размера кисти
+                if (key = 90 & keyFlag) {do PaintTools.editSize(1); let keyFlag = false; do DrawUI.updatePosition();}
+                if (key = 88 & keyFlag) {do PaintTools.editSize(-1); let keyFlag = false; do DrawUI.updatePosition();}
+                // Потверждение конца рисования фигуры
+                if (key = 69 & keyFlag) {do PaintTools.tryRelize(); let keyFlag = false; let startDrawing = false; do DrawUI.updatePosition();}
+                // Использование активного инструмента
+                if (startDrawing = true & isMoving) {do PaintTools.tryDraw(); let isMoving = false;}
+                let tick = 0;
             }
 
             let tick = tick + 1;
         }
         return;
-   }
+    }
 
-
-   function bool isStartDrawing () {
-     return startDrawing;
-   }
+    function bool isStartDrawing () {
+        return startDrawing;
+    }
 }
