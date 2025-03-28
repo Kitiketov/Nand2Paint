@@ -13,6 +13,7 @@ class DrawUI {
 	static String FalseString;
 
     function void PrintPosition (int x, int y) {
+		var Vector saveVec;
         do Output.moveCursor(22, 0);
         do Output.printString(NameOfX);
         do Output.printInt(x);
@@ -35,15 +36,27 @@ class DrawUI {
         }
 
 		do Output.printString(NameOfSpace);
-		do Output.printString(NameOfIsDrawing);
+		if (PaintTools.getInstrument() = 2){
+			do Output.printString(NameOfIsDrawing);
 
-		if (Main.isStartDrawing()){
-			do Output.printString(TrueString);
-			do Output.printString(NameOfSpace);
+			if (Main.isStartDrawing()){
+				do Output.printString(TrueString);
+				do Output.printString(NameOfSpace);
+			}
+			else {
+				do Output.printString(FalseString);
+			}
 		}
 		else {
-			do Output.printString(FalseString);
+			let saveVec = Cursor.getPrevPosition();
+			
+			do Output.printString(NameOfX);
+			do Output.printInt(saveVec.getX());
+			do Output.printString(NameOfSpace);
+			do Output.printString(NameOfY);
+			do Output.printInt(saveVec.getY());
 		}
+		
         return;
     }
 
