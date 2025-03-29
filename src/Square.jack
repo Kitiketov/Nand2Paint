@@ -19,7 +19,7 @@ class Square{
             let xx2 = Math.max(x1, x2);
             let yy1 = Math.min(y1, y2);
             let yy2 = Math.max(y1, y2);
-            
+
             do Screen.drawRectangle(xx1, yy1, xx2, yy2);
         }
         else{
@@ -28,8 +28,6 @@ class Square{
             do Screen.drawLine(x2, y1, x2, y2);
             do Screen.drawLine(x1, y2, x2, y2);
         }
-        
-        
         return;
     }
 }

@@ -92,17 +92,7 @@ and
 if-goto IF_TRUE2
 goto IF_FALSE2
 label IF_TRUE2
-push static 2
-not
-pop static 2
-push constant 0
-pop static 3
-call Cursor.savePosition 0
-pop temp 0
-push constant 0
-not
-pop static 5
-call DrawUI.updatePosition 0
+call Main.pressSpace 0
 pop temp 0
 label IF_FALSE2
 push local 0
@@ -391,6 +381,31 @@ add
 pop local 1
 goto WHILE_EXP0
 label WHILE_END0
+push constant 0
+return
+function Main.pressSpace 0
+push static 1
+call PaintTools.getInstrument 1
+push constant 2
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push static 2
+not
+pop static 2
+goto IF_END0
+label IF_FALSE0
+call Cursor.savePosition 0
+pop temp 0
+label IF_END0
+push constant 0
+not
+pop static 5
+push constant 0
+pop static 3
+call DrawUI.updatePosition 0
+pop temp 0
 push constant 0
 return
 function Main.isStartDrawing 0

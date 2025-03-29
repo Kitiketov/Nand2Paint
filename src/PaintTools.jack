@@ -62,6 +62,7 @@ class PaintTools{
         if (instrument = 7){
             do Circle.draw(prevPos, pos, color, true);
         }
+
         return;
     }
 
