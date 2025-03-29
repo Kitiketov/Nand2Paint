@@ -20,7 +20,7 @@ class Circle {
         let qy = y * y;        
 
         let r = Math.sqrt(qx + qy) / 2 - 1;
-        
+
         let midX = x1 + x2;
         let midX = midX / 2;
         let midY = y1 + y2;
@@ -32,7 +32,6 @@ class Circle {
             let r = r - 1;
             do Screen.drawCircle(midX, midY, r);
         }
-        
         return;
     }
 }
