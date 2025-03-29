@@ -40,5 +40,5 @@ let check4 = Cursor.isValidMoveDirection(x, y); - Зачем 4 раза подр
 
 При попытке нарисовать круг возле края экрана выводит ошибку : Illegal radius
 
-![alt text](image.png)
+![alt text](image-1.png)
 
