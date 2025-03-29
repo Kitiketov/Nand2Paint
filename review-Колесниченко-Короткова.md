@@ -12,8 +12,11 @@ var Vector pos, prevPos; - аналогично, может лучше position 
 3) Pen.jack
 
 let check1 = Cursor.isValidMoveDirection(x, y);
+
 let check2 = Cursor.isValidMoveDirection(x, y);
+
 let check3 = Cursor.isValidMoveDirection(x, y);
+
 let check4 = Cursor.isValidMoveDirection(x, y); - Зачем 4 раза подряд вызывать один и тот же метод?
 
 4) Square.jack 
@@ -41,4 +44,7 @@ let check4 = Cursor.isValidMoveDirection(x, y); - Зачем 4 раза подр
 При попытке нарисовать круг возле края экрана выводит ошибку : Illegal radius
 
 ![alt text](image-1.png)
+
+
+В целом, проект очень интересный. Понятный интерфейс - легко и быстро освоить, наглядная и подробная инструкция по использованию, хорошо структурированный код
 
