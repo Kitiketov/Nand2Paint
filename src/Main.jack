@@ -1,7 +1,6 @@
 class Main
 {
     static Cursor cursor;
-    static PaintTools paintTools;
     static bool startDrawing;
     static bool keyFlag;
     static bool isRelize;
@@ -27,7 +26,7 @@ class Main
    {
         var int key, tick;
 
-        do paintTools.init();
+        do PaintTools.init();
         do DrawUI.init();
         do Cursor.init();
         do DrawUI.updatePosition();        
@@ -76,7 +75,7 @@ class Main
     }
 
     function void pressSpace () {
-        if (paintTools.getInstrument() = 2){
+        if (PaintTools.getInstrument() = 2){
             let startDrawing = ~startDrawing;
         }
         else {

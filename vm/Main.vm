@@ -49,8 +49,7 @@ push local 0
 return
 label IF_END1
 function Main.main 2
-push static 1
-call PaintTools.init 1
+call PaintTools.init 0
 pop temp 0
 call DrawUI.init 0
 pop temp 0
@@ -60,7 +59,7 @@ call DrawUI.updatePosition 0
 pop temp 0
 push constant 0
 not
-pop static 3
+pop static 2
 label WHILE_EXP0
 push constant 0
 not
@@ -82,12 +81,12 @@ goto IF_FALSE1
 label IF_TRUE1
 push constant 0
 not
-pop static 3
+pop static 2
 label IF_FALSE1
 push local 0
 push constant 32
 eq
-push static 3
+push static 2
 and
 if-goto IF_TRUE2
 goto IF_FALSE2
@@ -109,7 +108,7 @@ call Cursor.moveDirection 1
 pop temp 0
 push constant 0
 not
-pop static 5
+pop static 4
 label IF_FALSE3
 push local 0
 push constant 65
@@ -125,7 +124,7 @@ call Cursor.moveDirection 1
 pop temp 0
 push constant 0
 not
-pop static 5
+pop static 4
 label IF_FALSE4
 push local 0
 push constant 83
@@ -140,7 +139,7 @@ call Cursor.moveDirection 1
 pop temp 0
 push constant 0
 not
-pop static 5
+pop static 4
 label IF_FALSE5
 push local 0
 push constant 68
@@ -155,7 +154,7 @@ call Cursor.moveDirection 1
 pop temp 0
 push constant 0
 not
-pop static 5
+pop static 4
 label IF_FALSE6
 push local 0
 push constant 89
@@ -172,7 +171,7 @@ call Cursor.moveDirection 1
 pop temp 0
 push constant 0
 not
-pop static 5
+pop static 4
 label IF_FALSE7
 push local 0
 push constant 85
@@ -188,7 +187,7 @@ call Cursor.moveDirection 1
 pop temp 0
 push constant 0
 not
-pop static 5
+pop static 4
 label IF_FALSE8
 push local 0
 push constant 72
@@ -204,7 +203,7 @@ call Cursor.moveDirection 1
 pop temp 0
 push constant 0
 not
-pop static 5
+pop static 4
 label IF_FALSE9
 push local 0
 push constant 74
@@ -219,12 +218,12 @@ call Cursor.moveDirection 1
 pop temp 0
 push constant 0
 not
-pop static 5
+pop static 4
 label IF_FALSE10
 push local 0
 push constant 49
 eq
-push static 3
+push static 2
 and
 if-goto IF_TRUE11
 goto IF_FALSE11
@@ -232,7 +231,7 @@ label IF_TRUE11
 call PaintTools.changeColor 0
 pop temp 0
 push constant 0
-pop static 3
+pop static 2
 call DrawUI.updatePosition 0
 pop temp 0
 label IF_FALSE11
@@ -311,7 +310,7 @@ label IF_FALSE17
 push local 0
 push constant 90
 eq
-push static 3
+push static 2
 and
 if-goto IF_TRUE18
 goto IF_FALSE18
@@ -320,14 +319,14 @@ push constant 1
 call PaintTools.editSize 1
 pop temp 0
 push constant 0
-pop static 3
+pop static 2
 call DrawUI.updatePosition 0
 pop temp 0
 label IF_FALSE18
 push local 0
 push constant 88
 eq
-push static 3
+push static 2
 and
 if-goto IF_TRUE19
 goto IF_FALSE19
@@ -337,14 +336,14 @@ neg
 call PaintTools.editSize 1
 pop temp 0
 push constant 0
-pop static 3
+pop static 2
 call DrawUI.updatePosition 0
 pop temp 0
 label IF_FALSE19
 push local 0
 push constant 69
 eq
-push static 3
+push static 2
 and
 if-goto IF_TRUE20
 goto IF_FALSE20
@@ -352,17 +351,17 @@ label IF_TRUE20
 call PaintTools.tryRelize 0
 pop temp 0
 push constant 0
-pop static 3
-push constant 0
 pop static 2
+push constant 0
+pop static 1
 call DrawUI.updatePosition 0
 pop temp 0
 label IF_FALSE20
-push static 2
+push static 1
 push constant 0
 not
 eq
-push static 5
+push static 4
 and
 if-goto IF_TRUE21
 goto IF_FALSE21
@@ -370,7 +369,7 @@ label IF_TRUE21
 call PaintTools.tryDraw 0
 pop temp 0
 push constant 0
-pop static 5
+pop static 4
 label IF_FALSE21
 push constant 0
 pop local 1
@@ -384,16 +383,15 @@ label WHILE_END0
 push constant 0
 return
 function Main.pressSpace 0
-push static 1
-call PaintTools.getInstrument 1
+call PaintTools.getInstrument 0
 push constant 2
 eq
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
-push static 2
+push static 1
 not
-pop static 2
+pop static 1
 goto IF_END0
 label IF_FALSE0
 call Cursor.savePosition 0
@@ -401,13 +399,13 @@ pop temp 0
 label IF_END0
 push constant 0
 not
-pop static 5
+pop static 4
 push constant 0
-pop static 3
+pop static 2
 call DrawUI.updatePosition 0
 pop temp 0
 push constant 0
 return
 function Main.isStartDrawing 0
-push static 2
+push static 1
 return
