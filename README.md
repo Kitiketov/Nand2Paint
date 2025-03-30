@@ -1,5 +1,5 @@
 # Nand2Paint
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/dadfa07f-94bb-443f-8459-46599e2cd25e)
 
 Paint написанный на языке jack в рамках курса Nand2Tetris.
 
