@@ -117,7 +117,7 @@ class DrawUI {
 		do Screen.drawPixel(x, y - 1);
 
 		do Screen.drawPixel(x, y - 1 - size);
-		do Screen.drawPixel( x+ 1 + size, y);
+		do Screen.drawPixel(x + 1 + size, y);
 		do Screen.drawPixel(x, y + 1 + size);
 		do Screen.drawPixel(x - 1 - size, y);
 		return;

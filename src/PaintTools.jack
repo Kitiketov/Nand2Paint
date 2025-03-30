@@ -14,11 +14,14 @@ class PaintTools{
         if (size = 1 & delta < 0){
             return;
         }
-        do DrawUI.cleanCursor(pos);
-        do DrawUI.loadPixelUnderCursor(pos);
-        let size = size + delta;
-        do Cursor.savePixelUnderCursor();
-        do DrawUI.drawCursor(pos);
+        if (Cursor.isValidMoveDirection(pos.getX(),pos.getY(),size+delta)){
+            do DrawUI.cleanCursor(pos);
+            do DrawUI.loadPixelUnderCursor(pos);
+            let size = size + delta;
+            do Cursor.savePixelUnderCursor();
+            do DrawUI.drawCursor(pos);
+        }
+
         return;
     }
 
