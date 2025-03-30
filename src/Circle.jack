@@ -15,10 +15,10 @@ class Circle {
 
         let x = Math.max(x1, x2) - Math.min(x1, x2);
         let y = Math.max(y1, y2) - Math.min(y1, y2);
-
+        if (x > 128) {return;}
+        if (y > 128) {return;}
         let qx = x * x;
         let qy = y * y;        
-
         let r = Math.sqrt(qx + qy) / 2 - 1;
         
         let midX = x1 + x2;
