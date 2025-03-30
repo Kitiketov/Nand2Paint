@@ -1,57 +1,21 @@
-function Pen.draw 6
+function Pen.draw 2
 push argument 0
 call Vector.getX 1
-pop local 4
+pop local 0
 push argument 0
 call Vector.getY 1
-pop local 5
+pop local 1
 push argument 2
 push constant 1
 sub
 pop argument 2
-push local 4
-push local 5
-call Cursor.isValidMoveDirection 2
-pop local 0
-push local 4
-push local 5
-call Cursor.isValidMoveDirection 2
-pop local 1
-push local 4
-push local 5
-call Cursor.isValidMoveDirection 2
-pop local 2
-push local 4
-push local 5
-call Cursor.isValidMoveDirection 2
-pop local 3
-push local 0
-if-goto IF_TRUE0
-goto IF_FALSE0
-label IF_TRUE0
-push local 1
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
-push local 2
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
-push local 3
-if-goto IF_TRUE3
-goto IF_FALSE3
-label IF_TRUE3
 push argument 1
 call Screen.setColor 1
 pop temp 0
-push local 4
-push local 5
+push local 0
+push local 1
 push argument 2
 call Screen.drawCircle 3
 pop temp 0
-label IF_FALSE3
-label IF_FALSE2
-label IF_FALSE1
-label IF_FALSE0
 push constant 0
 return

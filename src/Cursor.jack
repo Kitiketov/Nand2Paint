@@ -7,7 +7,7 @@ class Cursor{
     {
         let prevPosition = Vector.new(-1, -1);
         let underCursor = Array.new(8);
-        let position = Vector.new(16, 16);
+        let position = Vector.new(16, 17);
         do DrawUI.drawCursor(position);
         return;
     }
@@ -53,7 +53,7 @@ class Cursor{
         let newX = position.getX() + direction.getX();
         let newY = position.getY() + direction.getY();
 
-        if (Cursor.isValidMoveDirection(newX, newY)){
+        if (Cursor.isValidMoveDirection(newX, newY, PaintTools.getSize())){
             do DrawUI.cleanCursor(position);
             do DrawUI.loadPixelUnderCursor(position);
             let position = position.add(direction);
@@ -61,13 +61,13 @@ class Cursor{
             do Cursor.savePixelUnderCursor();
             do DrawUI.drawCursor(position);
         }
+
         do direction.dispose();
         return;
     }
 
-    function bool isValidMoveDirection(int x, int y){
-        var int size;
-        let size = PaintTools.getSize() - 1;
+    function bool isValidMoveDirection(int x, int y, int size){
+        let size = size - 1;
         return ((x - size > 0) & (x+size < 511) & (y - size > 16) & (y + size < 238));
     }
 

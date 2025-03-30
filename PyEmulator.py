@@ -16,25 +16,20 @@ class Main:
         self.listener = keyboard.Listener(on_press=self.on_key_press)
         self.listener.start()
     def on_key_press(self, key):
-        if key.char == 'q' and not self.board.can_pressed:
-            print('Включен')
-            self.board.can_pressed = True
-        elif key.char == 'e' and self.board.can_pressed:
-            print('Отключен')
-            self.board.can_pressed = False
+        try:
+            if key.char == 'q' and not self.board.can_pressed:
+                print('Включен')
+                self.board.can_pressed = True
+            elif key.char == 'e' and self.board.can_pressed:
+                print('Отключен')
+                self.board.can_pressed = False
+        except:
+            pass
     def run(self):
         while True:
             if self.mouse.update_mouse():
                 self.board.emulate(self.mouse.direction)
-            # if keyboard.is_pressed('q') and not self.board.can_pressed:
-            #     print('Включен')
-            #     self.board.can_pressed = True
-            # elif keyboard.is_pressed('e') and self.board.can_pressed:
-            #     print('Отключен')
-            #     self.board.can_pressed = False
-            #
-            # if self.mouse.update_mouse():
-            #     self.board.emulate(self.mouse.direction)
+
 
 
 class KeyboardPressed:
@@ -99,11 +94,7 @@ class Mouse:
 
         self.last_position = now_position
         self.last_time = time.time()
-        # self.last_position = now_position
-        # self.last_time = time.time()
-        # self.direction = Point(self.sign(delta_x), self.sign(delta_y))
-        # self.last_position = now_position
-        # self.last_time = time.time()
+ 
         return True
 
 
