@@ -1,0 +1,39 @@
+function Line.draw 4
+push argument 0
+call Vector.getX 1
+pop local 0
+push argument 0
+call Vector.getY 1
+pop local 1
+push local 0
+push constant 1
+neg
+eq
+push local 1
+and
+push constant 1
+neg
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 0
+return
+label IF_FALSE0
+push argument 1
+call Vector.getX 1
+pop local 2
+push argument 1
+call Vector.getY 1
+pop local 3
+push argument 2
+call Screen.setColor 1
+pop temp 0
+push local 0
+push local 1
+push local 2
+push local 3
+call Screen.drawLine 4
+pop temp 0
+push constant 0
+return

@@ -1,0 +1,413 @@
+function Main.binPow 1
+push argument 1
+push constant 0
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push constant 1
+return
+label IF_FALSE0
+push argument 1
+push constant 2
+call Math.divide 2
+push constant 2
+call Math.multiply 2
+push constant 1
+neg
+call Math.multiply 2
+push argument 1
+add
+push constant 1
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push argument 0
+push argument 1
+push constant 1
+sub
+call Main.binPow 2
+push argument 0
+call Math.multiply 2
+pop local 0
+push local 0
+return
+goto IF_END1
+label IF_FALSE1
+push argument 0
+push argument 1
+push constant 2
+call Math.divide 2
+call Main.binPow 2
+pop local 0
+push local 0
+push local 0
+call Math.multiply 2
+pop local 0
+push local 0
+return
+label IF_END1
+function Main.main 2
+push static 1
+call PaintTools.init 1
+pop temp 0
+call DrawUI.init 0
+pop temp 0
+call Cursor.init 0
+pop temp 0
+call DrawUI.updatePosition 0
+pop temp 0
+push constant 0
+not
+pop static 3
+label WHILE_EXP0
+push constant 0
+not
+not
+if-goto WHILE_END0
+push local 1
+push constant 2000
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+call Keyboard.keyPressed 0
+pop local 0
+push local 0
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+not
+pop static 3
+label IF_FALSE1
+push local 0
+push constant 32
+eq
+push static 3
+and
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+call Main.pressSpace 0
+pop temp 0
+label IF_FALSE2
+push local 0
+push constant 87
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push constant 0
+push constant 1
+neg
+call Vector.new 2
+call Cursor.moveDirection 1
+pop temp 0
+push constant 0
+not
+pop static 5
+label IF_FALSE3
+push local 0
+push constant 65
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push constant 1
+neg
+push constant 0
+call Vector.new 2
+call Cursor.moveDirection 1
+pop temp 0
+push constant 0
+not
+pop static 5
+label IF_FALSE4
+push local 0
+push constant 83
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push constant 0
+push constant 1
+call Vector.new 2
+call Cursor.moveDirection 1
+pop temp 0
+push constant 0
+not
+pop static 5
+label IF_FALSE5
+push local 0
+push constant 68
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push constant 1
+push constant 0
+call Vector.new 2
+call Cursor.moveDirection 1
+pop temp 0
+push constant 0
+not
+pop static 5
+label IF_FALSE6
+push local 0
+push constant 89
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push constant 1
+neg
+push constant 1
+neg
+call Vector.new 2
+call Cursor.moveDirection 1
+pop temp 0
+push constant 0
+not
+pop static 5
+label IF_FALSE7
+push local 0
+push constant 85
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push constant 1
+push constant 1
+neg
+call Vector.new 2
+call Cursor.moveDirection 1
+pop temp 0
+push constant 0
+not
+pop static 5
+label IF_FALSE8
+push local 0
+push constant 72
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push constant 1
+neg
+push constant 1
+call Vector.new 2
+call Cursor.moveDirection 1
+pop temp 0
+push constant 0
+not
+pop static 5
+label IF_FALSE9
+push local 0
+push constant 74
+eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push constant 1
+push constant 1
+call Vector.new 2
+call Cursor.moveDirection 1
+pop temp 0
+push constant 0
+not
+pop static 5
+label IF_FALSE10
+push local 0
+push constant 49
+eq
+push static 3
+and
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+call PaintTools.changeColor 0
+pop temp 0
+push constant 0
+pop static 3
+call DrawUI.updatePosition 0
+pop temp 0
+label IF_FALSE11
+push local 0
+push constant 50
+eq
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push constant 2
+call PaintTools.setInstrument 1
+pop temp 0
+call DrawUI.updatePosition 0
+pop temp 0
+label IF_FALSE12
+push local 0
+push constant 51
+eq
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push constant 3
+call PaintTools.setInstrument 1
+pop temp 0
+call DrawUI.updatePosition 0
+pop temp 0
+label IF_FALSE13
+push local 0
+push constant 52
+eq
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push constant 4
+call PaintTools.setInstrument 1
+pop temp 0
+call DrawUI.updatePosition 0
+pop temp 0
+label IF_FALSE14
+push local 0
+push constant 53
+eq
+if-goto IF_TRUE15
+goto IF_FALSE15
+label IF_TRUE15
+push constant 5
+call PaintTools.setInstrument 1
+pop temp 0
+call DrawUI.updatePosition 0
+pop temp 0
+label IF_FALSE15
+push local 0
+push constant 54
+eq
+if-goto IF_TRUE16
+goto IF_FALSE16
+label IF_TRUE16
+push constant 6
+call PaintTools.setInstrument 1
+pop temp 0
+call DrawUI.updatePosition 0
+pop temp 0
+label IF_FALSE16
+push local 0
+push constant 55
+eq
+if-goto IF_TRUE17
+goto IF_FALSE17
+label IF_TRUE17
+push constant 7
+call PaintTools.setInstrument 1
+pop temp 0
+call DrawUI.updatePosition 0
+pop temp 0
+label IF_FALSE17
+push local 0
+push constant 90
+eq
+push static 3
+and
+if-goto IF_TRUE18
+goto IF_FALSE18
+label IF_TRUE18
+push constant 1
+call PaintTools.editSize 1
+pop temp 0
+push constant 0
+pop static 3
+call DrawUI.updatePosition 0
+pop temp 0
+label IF_FALSE18
+push local 0
+push constant 88
+eq
+push static 3
+and
+if-goto IF_TRUE19
+goto IF_FALSE19
+label IF_TRUE19
+push constant 1
+neg
+call PaintTools.editSize 1
+pop temp 0
+push constant 0
+pop static 3
+call DrawUI.updatePosition 0
+pop temp 0
+label IF_FALSE19
+push local 0
+push constant 69
+eq
+push static 3
+and
+if-goto IF_TRUE20
+goto IF_FALSE20
+label IF_TRUE20
+call PaintTools.tryRelize 0
+pop temp 0
+push constant 0
+pop static 3
+push constant 0
+pop static 2
+call DrawUI.updatePosition 0
+pop temp 0
+label IF_FALSE20
+push static 2
+push constant 0
+not
+eq
+push static 5
+and
+if-goto IF_TRUE21
+goto IF_FALSE21
+label IF_TRUE21
+call PaintTools.tryDraw 0
+pop temp 0
+push constant 0
+pop static 5
+label IF_FALSE21
+push constant 0
+pop local 1
+label IF_FALSE0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return
+function Main.pressSpace 0
+push static 1
+call PaintTools.getInstrument 1
+push constant 2
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push static 2
+not
+pop static 2
+goto IF_END0
+label IF_FALSE0
+call Cursor.savePosition 0
+pop temp 0
+label IF_END0
+push constant 0
+not
+pop static 5
+push constant 0
+pop static 3
+call DrawUI.updatePosition 0
+pop temp 0
+push constant 0
+return
+function Main.isStartDrawing 0
+push static 2
+return
