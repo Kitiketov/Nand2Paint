@@ -10,7 +10,7 @@ class Line {
 
         let x2 = end.getX();
         let y2 = end.getY();
-        
+
         do Screen.setColor(color);
         do Screen.drawLine(x1, y1, x2, y2);
         return;

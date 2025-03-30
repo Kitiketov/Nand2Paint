@@ -28,6 +28,17 @@ push constant 0
 return
 label IF_FALSE1
 push local 0
+call Vector.getX 1
+push local 0
+call Vector.getY 1
+push static 0
+push argument 0
+add
+call Cursor.isValidMoveDirection 3
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 0
 call DrawUI.cleanCursor 1
 pop temp 0
 push local 0
@@ -42,6 +53,7 @@ pop temp 0
 push local 0
 call DrawUI.drawCursor 1
 pop temp 0
+label IF_FALSE2
 push constant 0
 return
 function PaintTools.init 0

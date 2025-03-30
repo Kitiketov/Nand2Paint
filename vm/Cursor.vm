@@ -9,7 +9,7 @@ push constant 8
 call Array.new 1
 pop static 1
 push constant 16
-push constant 16
+push constant 17
 call Vector.new 2
 pop static 0
 push static 0
@@ -215,7 +215,8 @@ add
 pop local 1
 push local 0
 push local 1
-call Cursor.isValidMoveDirection 2
+call PaintTools.getSize 0
+call Cursor.isValidMoveDirection 3
 if-goto IF_TRUE0
 goto IF_FALSE0
 label IF_TRUE0
@@ -242,30 +243,30 @@ call Vector.dispose 1
 pop temp 0
 push constant 0
 return
-function Cursor.isValidMoveDirection 1
-call PaintTools.getSize 0
+function Cursor.isValidMoveDirection 0
+push argument 2
 push constant 1
 sub
-pop local 0
+pop argument 2
 push argument 0
-push local 0
+push argument 2
 sub
 push constant 0
 gt
 push argument 0
-push local 0
+push argument 2
 add
 push constant 511
 lt
 and
 push argument 1
-push local 0
+push argument 2
 sub
 push constant 16
 gt
 and
 push argument 1
-push local 0
+push argument 2
 add
 push constant 238
 lt
