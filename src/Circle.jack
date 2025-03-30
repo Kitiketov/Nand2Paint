@@ -27,7 +27,7 @@ class Circle {
         let middleY = yStart + yEnd;
         let middleY = middleY / 2;
         if (((middleX - r) < 0) | ((middleX + r) > 511) | 
-            ((middleY - r) < 0) | ((middleY + r) > 238)) {
+            ((middleY - r) < 16) | ((middleY + r) > 238)) {
             return;
         }
         do Screen.drawCircle(middleX, middleY, r);

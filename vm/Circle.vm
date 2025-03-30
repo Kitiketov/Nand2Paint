@@ -46,6 +46,24 @@ call Math.min 2
 sub
 pop local 1
 push local 0
+push constant 128
+gt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+push local 1
+push constant 128
+gt
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+return
+label IF_FALSE2
+push local 0
 push local 0
 call Math.multiply 2
 pop local 9
@@ -92,7 +110,7 @@ or
 push local 8
 push local 6
 sub
-push constant 0
+push constant 16
 lt
 or
 push local 8
@@ -101,12 +119,12 @@ add
 push constant 238
 gt
 or
-if-goto IF_TRUE1
-goto IF_FALSE1
-label IF_TRUE1
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
 push constant 0
 return
-label IF_FALSE1
+label IF_FALSE3
 push local 7
 push local 8
 push local 6
@@ -115,9 +133,9 @@ pop temp 0
 push argument 3
 push constant 0
 eq
-if-goto IF_TRUE2
-goto IF_FALSE2
-label IF_TRUE2
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
 push argument 2
 not
 call Screen.setColor 1
@@ -131,6 +149,6 @@ push local 8
 push local 6
 call Screen.drawCircle 3
 pop temp 0
-label IF_FALSE2
+label IF_FALSE4
 push constant 0
 return
