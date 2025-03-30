@@ -1,36 +1,39 @@
 class Circle {
     function void draw (Vector start, Vector end,bool color,bool isFill) {
-        var int x, y, x1, x2, y1, y2, r, midX, midY, qx, qy;
-        let x1 = start.getX();
-        let y1 = start.getY();
+        var int x, y, xStart, xEnd, yStart, yEnd, r, middleX, middleY, qx, qy;
+        let xStart = start.getX();
+        let yStart = start.getY();
 
-        if (x1 = -1 & y1 = -1){
+        if (xStart = -1 & yStart = -1){
             return;
         }
 
-        let x2 = end.getX();
-        let y2 = end.getY();
+        let xEnd = end.getX();
+        let yEnd = end.getY();
 
         do Screen.setColor(color);
 
-        let x = Math.max(x1, x2) - Math.min(x1, x2);
-        let y = Math.max(y1, y2) - Math.min(y1, y2);
+        let x = Math.max(xStart, xEnd) - Math.min(xStart, xEnd);
+        let y = Math.max(yStart, yEnd) - Math.min(yStart, yEnd);
 
         let qx = x * x;
         let qy = y * y;        
 
         let r = Math.sqrt(qx + qy) / 2 - 1;
 
-        let midX = x1 + x2;
-        let midX = midX / 2;
-        let midY = y1 + y2;
-        let midY = midY / 2;
-
-        do Screen.drawCircle(midX, midY, r);
+        let middleX = xStart + xEnd;
+        let middleX = middleX / 2;
+        let middleY = yStart + yEnd;
+        let middleY = middleY / 2;
+        if (((middleX - r) < 0) | ((middleX + r) > 511) | 
+            ((middleY - r) < 0) | ((middleY + r) > 238)) {
+            return;
+        }
+        do Screen.drawCircle(middleX, middleY, r);
         if (isFill = 0){
             do Screen.setColor(~color);
             let r = r - 1;
-            do Screen.drawCircle(midX, midY, r);
+            do Screen.drawCircle(middleX, middleY, r);
         }
         return;
     }
